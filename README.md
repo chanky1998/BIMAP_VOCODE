@@ -104,13 +104,13 @@ Each experiment logs the following metrics into a CSV file:
 
 Run inference and evaluation using `inference.py`:
 
-Examples:
+Examples (512 Channels):
 
 ```bash
 # H1: baseline (no compression)
 python inference.py \
-    --input_wavs_dir test_files_LibriSpeech_wav \
-    --output_dir generated_H1_512C \
+    --input_wavs_dir LibriSpeech_wav/test \
+    --output_dir generated_audios/generated_H1_512C \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
     --experiment_name H1_512C_baseline \
@@ -118,8 +118,8 @@ python inference.py \
 
 # H2: quantized (INT8 dynamic quantization)
 python inference.py \
-    --input_wavs_dir test_files_LibriSpeech_wav \
-    --output_dir generated_H2_512C_int8 \
+    --input_wavs_dir LibriSpeech_wav/test \
+    --output_dir generated_audios/generated_H2_512C_int8 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
     --experiment_name H2_512C_quantized \
@@ -128,20 +128,20 @@ python inference.py \
 
 # H3: pruning 30%
 python inference.py \
-    --input_wavs_dir test_files_LibriSpeech_wav \
-    --output_dir generated_H3_512C_pruned30 \
+    --input_wavs_dir LibriSpeech_wav/test \
+    --output_dir generated_audios/generated_H3_512C_pruned30 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
     --experiment_name H3_512C_pruned30 \
     --csv_file experiments_results.csv \
     --prune_ratio 0.3 \
     --save_compressed_checkpoint \
-    --compressed_checkpoint_file checkpoints_compressed/v1_c512_pruned30
+    --compressed_checkpoint_file cp_hifigan/v1_c512/v1_c512_pruned30
 
 # H4: pruning 30% + quantize
 python inference.py \
-    --input_wavs_dir test_files_LibriSpeech_wav \
-    --output_dir generated_H4_512C_pruned30_int8 \
+    --input_wavs_dir LibriSpeech_wav/test \
+    --output_dir generated_audios/generated_H4_512C_pruned30_int8 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
     --experiment_name H4_512C_pruned30_int8 \
@@ -149,7 +149,7 @@ python inference.py \
     --prune_ratio 0.3 \
     --quantize \
     --save_compressed_checkpoint \
-    --compressed_checkpoint_file checkpoints_compressed/v1_c512_pruned30_int8
+    --compressed_checkpoint_file cp_hifigan/v1_c512/v1_c512_pruned30_int8
 ```
 
 ### Batch experiments
