@@ -20,7 +20,7 @@ This project extends the original codebase by introducing a systematic experimen
 
 Based on the original implementation, the following modifications were made:
 
-- Replaced the original training/evaluation dataset with a **LibriSpeech** dataset 
+- Replaced the original training/evaluation dataset with a [**LibriSpeech**](https://www.openslr.org/12/) dataset.
 - Adapted preprocessing and inference pipeline to support the new dataset
 - Implemented a unified experimental framework for compression studies
 - Extended the original codebase to support systematic evaluation of:
