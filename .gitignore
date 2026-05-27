@@ -21,7 +21,6 @@ envs/
 cp_hifigan/*
 !cp_hifigan/.gitkeep
 
-checkpoints_compressed/
 *.pt
 *.pth
 *.ckpt
