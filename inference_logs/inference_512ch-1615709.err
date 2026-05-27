@@ -1,0 +1,2 @@
+/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/nn/utils/weight_norm.py:134: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)

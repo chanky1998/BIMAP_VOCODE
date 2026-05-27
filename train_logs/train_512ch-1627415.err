@@ -1,0 +1,3 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-05-24T13:38:00.005] error: *** JOB 1627415 ON tg091 CANCELLED AT 2026-05-24T13:38:00 DUE TO TIME LIMIT ***
+[2026-05-24T13:38:00.005] error: *** STEP 1627415.0 ON tg091 CANCELLED AT 2026-05-24T13:38:00 DUE TO TIME LIMIT ***

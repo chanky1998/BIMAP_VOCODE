@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "train.py", line 306, in <module>
+    main()
+  File "train.py", line 302, in main
+    train(0, a, h)
+  File "train.py", line 202, in train
+    save_checkpoint(history_g_path, generator_state)
+  File "/home/hpc/vlbi/vlbi107v/hifi-gan/utils.py", line 48, in save_checkpoint
+    torch.save(obj, filepath)
+  File "/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/serialization.py", line 651, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/serialization.py", line 525, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/serialization.py", line 496, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c128 does not exist.
+srun: error: tg094: task 0: Exited with exit code 1
+srun: Terminating StepId=1599841.0

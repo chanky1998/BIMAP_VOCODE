@@ -1,0 +1,79 @@
+### Starting TaskPrologue of job 1596196 on tg071 at Sun May 10 04:08:54 PM CEST 2026
+Running on cores 0-1,8-9,17-18,24-25 with governor ondemand
+Sun May 10 16:08:54 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-32GB           On  |   00000000:18:00.0 Off |                    0 |
+| N/A   30C    P0             27W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+========== Starting Inference ==========
+Initializing Inference Process..
+Loading 'cp_hifigan/v1_test01/g_00675000'
+Complete.
+Removing weight norm...
+generated_files_LibriSpeech_wav/61-70968-0004_generated.wav | RTF: 0.3736(1.451s / 3.885s)
+generated_files_LibriSpeech_wav/61-70968-0019_generated.wav | RTF: 0.0073(0.040s / 5.475s)
+generated_files_LibriSpeech_wav/61-70968-0014_generated.wav | RTF: 0.0049(0.037s / 7.485s)
+generated_files_LibriSpeech_wav/61-70968-0001_generated.wav | RTF: 0.0103(0.037s / 3.610s)
+generated_files_LibriSpeech_wav/61-70968-0015_generated.wav | RTF: 0.0067(0.036s / 5.375s)
+generated_files_LibriSpeech_wav/61-70968-0009_generated.wav | RTF: 0.0081(0.036s / 4.510s)
+generated_files_LibriSpeech_wav/61-70968-0011_generated.wav | RTF: 0.0058(0.037s / 6.375s)
+generated_files_LibriSpeech_wav/61-70968-0017_generated.wav | RTF: 0.0071(0.036s / 5.110s)
+generated_files_LibriSpeech_wav/61-70968-0007_generated.wav | RTF: 0.0103(0.037s / 3.550s)
+generated_files_LibriSpeech_wav/61-70968-0016_generated.wav | RTF: 0.0098(0.036s / 3.720s)
+generated_files_LibriSpeech_wav/61-70968-0003_generated.wav | RTF: 0.0083(0.036s / 4.315s)
+generated_files_LibriSpeech_wav/61-70968-0005_generated.wav | RTF: 0.0071(0.036s / 5.070s)
+generated_files_LibriSpeech_wav/61-70968-0006_generated.wav | RTF: 0.0125(0.037s / 2.935s)
+generated_files_LibriSpeech_wav/61-70968-0008_generated.wav | RTF: 0.0103(0.037s / 3.535s)
+generated_files_LibriSpeech_wav/61-70968-0000_generated.wav | RTF: 0.0075(0.037s / 4.905s)
+generated_files_LibriSpeech_wav/61-70968-0013_generated.wav | RTF: 0.0082(0.036s / 4.450s)
+generated_files_LibriSpeech_wav/61-70968-0002_generated.wav | RTF: 0.0124(0.037s / 2.970s)
+generated_files_LibriSpeech_wav/61-70968-0018_generated.wav | RTF: 0.0153(0.037s / 2.405s)
+generated_files_LibriSpeech_wav/61-70968-0010_generated.wav | RTF: 0.0046(0.038s / 8.295s)
+generated_files_LibriSpeech_wav/61-70968-0012_generated.wav | RTF: 0.0140(0.037s / 2.610s)
+Average RTF: 0.0237(2.151s / 90.585s)
+========== Starting Evaluation ==========
+Processed 20/20 pairs
+Pairs evaluated: 20
+Mel L1: 0.274999
+PESQ: 2.188779
+STOI: 0.936531
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Sun May 10 04:09:21 PM CEST 2026
+= Job-ID             : 1596196 on tinygpu
+= Job-Name           : hifigan_inference
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : v100
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:00:32
+= Total RAM usage    : 0.6 GiB of requested  GiB (%)   
+= Node list          : tg071
+= Subm/Elig/Start/End: 2026-05-10T16:08:49 / 2026-05-10T16:08:49 / 2026-05-10T16:08:49 / 2026-05-10T16:09:21
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              57.2G   104.9G   209.7G        N/A  39,355      500K   1,000K        N/A    
+    /home/woody           314.7G  1000.0G  1500.0G        N/A      72K   5,000K   7,500K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+Tesla V100-PCIE-32GB, 00000000:18:00.0, 689032, 12 %, 4 %, 860 MiB, 5777 ms

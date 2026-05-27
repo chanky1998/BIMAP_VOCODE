@@ -1,0 +1,40 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+venv/
+.venv/
+ENV/
+envs/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.idea/
+.DS_Store
+*.log
+.pytest_cache/
+
+# Checkpoints, models and large binaries
+cp_hifigan/*
+!cp_hifigan/.gitkeep
+
+checkpoints_compressed/
+*.pt
+*.pth
+*.ckpt
+
+generated_audios/*
+!generated_audios/.gitkeep
+
+LibriSpeech_wav/*
+!LibriSpeech_wav/.gitkeep
+
+# Logs produced by training/inference
+#inference_logs/
+#train_logs/
+
+# Experiment result CSVs (optional)
+# experiments_results.csv

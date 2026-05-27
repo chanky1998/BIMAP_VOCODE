@@ -1,0 +1,80 @@
+### Starting TaskPrologue of job 1606364 on tg071 at Sat May 16 01:58:39 PM CEST 2026
+Running on cores 0-1,8-9,17-18,24-25 with governor ondemand
+Sat May 16 13:58:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-32GB           On  |   00000000:18:00.0 Off |                    0 |
+| N/A   39C    P0             29W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+========== Model 128 Channels ==========
+========== Starting Inference ==========
+Initializing Inference Process..
+Loading '/home/woody/vlbi/vlbi107v/cp_hifigan/v1_c128/g_02090000'
+Complete.
+Removing weight norm...
+generated_c128_wav/61-70968-0004_generated.wav | RTF: 4.0352(15.677s / 3.885s)
+generated_c128_wav/61-70968-0019_generated.wav | RTF: 0.0069(0.038s / 5.475s)
+generated_c128_wav/61-70968-0014_generated.wav | RTF: 0.0065(0.049s / 7.485s)
+generated_c128_wav/61-70968-0001_generated.wav | RTF: 0.0142(0.051s / 3.610s)
+generated_c128_wav/61-70968-0015_generated.wav | RTF: 0.0092(0.050s / 5.375s)
+generated_c128_wav/61-70968-0009_generated.wav | RTF: 0.0101(0.046s / 4.510s)
+generated_c128_wav/61-70968-0011_generated.wav | RTF: 0.0082(0.052s / 6.375s)
+generated_c128_wav/61-70968-0017_generated.wav | RTF: 0.0104(0.053s / 5.110s)
+generated_c128_wav/61-70968-0007_generated.wav | RTF: 0.0116(0.041s / 3.550s)
+generated_c128_wav/61-70968-0016_generated.wav | RTF: 0.0103(0.038s / 3.720s)
+generated_c128_wav/61-70968-0003_generated.wav | RTF: 0.0112(0.048s / 4.315s)
+generated_c128_wav/61-70968-0005_generated.wav | RTF: 0.0102(0.051s / 5.070s)
+generated_c128_wav/61-70968-0006_generated.wav | RTF: 0.0196(0.058s / 2.935s)
+generated_c128_wav/61-70968-0008_generated.wav | RTF: 0.0149(0.053s / 3.535s)
+generated_c128_wav/61-70968-0000_generated.wav | RTF: 0.0106(0.052s / 4.905s)
+generated_c128_wav/61-70968-0013_generated.wav | RTF: 0.0128(0.057s / 4.450s)
+generated_c128_wav/61-70968-0002_generated.wav | RTF: 0.0168(0.050s / 2.970s)
+generated_c128_wav/61-70968-0018_generated.wav | RTF: 0.0239(0.058s / 2.405s)
+generated_c128_wav/61-70968-0010_generated.wav | RTF: 0.0065(0.054s / 8.295s)
+generated_c128_wav/61-70968-0012_generated.wav | RTF: 0.0219(0.057s / 2.610s)
+Average RTF: 0.1836(16.632s / 90.585s)
+========== Starting Evaluation ==========
+Processed 20/20 pairs
+Pairs evaluated: 20
+Mel L1: 0.338424
+PESQ: 1.980893
+STOI: 0.914011
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Sat May 16 02:03:27 PM CEST 2026
+= Job-ID             : 1606364 on tinygpu
+= Job-Name           : inference_128ch
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : v100
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:04:53
+= Total RAM usage    : 1.1 GiB of requested  GiB (%)   
+= Node list          : tg071
+= Subm/Elig/Start/End: 2026-05-16T13:48:30 / 2026-05-16T13:48:30 / 2026-05-16T13:58:34 / 2026-05-16T14:03:27
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/woody           243.0G  1000.0G  1500.0G        N/A      72K   5,000K   7,500K        N/A    
+    /home/hpc              73.1G   104.9G   209.7G        N/A  39,757      500K   1,000K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+Tesla V100-PCIE-32GB, 00000000:18:00.0, 287690, 0 %, 0 %, 456 MiB, 25341 ms
