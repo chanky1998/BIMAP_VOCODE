@@ -112,3 +112,207 @@ Evaluation summary:
 
 Appended metrics to CSV: experiments_results.csv
 ========== H3: pruning 50% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.50...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H3_128C_pruned50/61-70968-0004_generated.wav | RTF: 0.2973(1.155s / 3.885s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0019_generated.wav | RTF: 0.2761(1.512s / 5.475s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0014_generated.wav | RTF: 0.2876(2.153s / 7.485s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0001_generated.wav | RTF: 0.2834(1.023s / 3.610s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0015_generated.wav | RTF: 0.2739(1.472s / 5.375s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0009_generated.wav | RTF: 0.2917(1.316s / 4.510s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0011_generated.wav | RTF: 0.2792(1.780s / 6.375s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0017_generated.wav | RTF: 0.2935(1.500s / 5.110s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0007_generated.wav | RTF: 0.2723(0.967s / 3.550s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0016_generated.wav | RTF: 0.2873(1.069s / 3.720s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0003_generated.wav | RTF: 0.2907(1.254s / 4.315s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0005_generated.wav | RTF: 0.2937(1.489s / 5.070s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0006_generated.wav | RTF: 0.2925(0.858s / 2.935s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0008_generated.wav | RTF: 0.2886(1.020s / 3.535s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0000_generated.wav | RTF: 0.2920(1.432s / 4.905s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0013_generated.wav | RTF: 0.2931(1.304s / 4.450s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0002_generated.wav | RTF: 0.2794(0.830s / 2.970s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0018_generated.wav | RTF: 0.2813(0.677s / 2.405s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0010_generated.wav | RTF: 0.2745(2.277s / 8.295s)
+generated_audios/generated_H3_128C_pruned50/61-70968-0012_generated.wav | RTF: 0.2711(0.708s / 2.610s)
+Average RTF: 0.2848(25.795s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 3.653593
+  PESQ: 1.106577
+  STOI: 0.316345
+
+Appended metrics to CSV: experiments_results.csv
+========== H3: pruning 70% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.70...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H3_128C_pruned70/61-70968-0004_generated.wav | RTF: 0.6952(2.701s / 3.885s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0019_generated.wav | RTF: 0.2731(1.495s / 5.475s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0014_generated.wav | RTF: 0.2961(2.217s / 7.485s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0001_generated.wav | RTF: 0.2874(1.038s / 3.610s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0015_generated.wav | RTF: 0.2701(1.452s / 5.375s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0009_generated.wav | RTF: 0.2889(1.303s / 4.510s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0011_generated.wav | RTF: 0.2759(1.759s / 6.375s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0017_generated.wav | RTF: 0.2902(1.483s / 5.110s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0007_generated.wav | RTF: 0.2842(1.009s / 3.550s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0016_generated.wav | RTF: 0.2729(1.015s / 3.720s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0003_generated.wav | RTF: 0.2757(1.190s / 4.315s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0005_generated.wav | RTF: 0.2911(1.476s / 5.070s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0006_generated.wav | RTF: 0.2667(0.783s / 2.935s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0008_generated.wav | RTF: 0.2897(1.024s / 3.535s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0000_generated.wav | RTF: 0.2876(1.411s / 4.905s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0013_generated.wav | RTF: 0.2914(1.297s / 4.450s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0002_generated.wav | RTF: 0.2806(0.833s / 2.970s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0018_generated.wav | RTF: 0.2744(0.660s / 2.405s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0010_generated.wav | RTF: 0.2751(2.282s / 8.295s)
+generated_audios/generated_H3_128C_pruned70/61-70968-0012_generated.wav | RTF: 0.2851(0.744s / 2.610s)
+Average RTF: 0.2999(27.171s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 6.332181
+  PESQ: 1.062410
+  STOI: 0.460759
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 30% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.30...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0004_generated.wav | RTF: 0.7701(2.992s / 3.885s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0019_generated.wav | RTF: 0.5982(3.275s / 5.475s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0014_generated.wav | RTF: 0.5185(3.881s / 7.485s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0001_generated.wav | RTF: 0.7970(2.877s / 3.610s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0015_generated.wav | RTF: 0.2903(1.560s / 5.375s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0009_generated.wav | RTF: 0.2875(1.297s / 4.510s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0011_generated.wav | RTF: 0.2734(1.743s / 6.375s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0017_generated.wav | RTF: 0.2742(1.401s / 5.110s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0007_generated.wav | RTF: 0.2707(0.961s / 3.550s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0016_generated.wav | RTF: 0.2804(1.043s / 3.720s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0003_generated.wav | RTF: 0.2814(1.214s / 4.315s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0005_generated.wav | RTF: 0.2840(1.440s / 5.070s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0006_generated.wav | RTF: 0.2691(0.790s / 2.935s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0008_generated.wav | RTF: 0.2860(1.011s / 3.535s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0000_generated.wav | RTF: 0.2832(1.389s / 4.905s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0013_generated.wav | RTF: 0.2852(1.269s / 4.450s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0002_generated.wav | RTF: 0.2840(0.844s / 2.970s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0018_generated.wav | RTF: 0.2802(0.674s / 2.405s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0010_generated.wav | RTF: 0.2680(2.223s / 8.295s)
+generated_audios/generated_H4_128C_pruned30_int8/61-70968-0012_generated.wav | RTF: 0.2723(0.711s / 2.610s)
+Average RTF: 0.3598(32.596s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 3.451714
+  PESQ: 1.053991
+  STOI: 0.350480
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 50% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.50...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0004_generated.wav | RTF: 0.3063(1.190s / 3.885s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0019_generated.wav | RTF: 0.2669(1.461s / 5.475s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0014_generated.wav | RTF: 0.2855(2.137s / 7.485s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0001_generated.wav | RTF: 0.2802(1.012s / 3.610s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0015_generated.wav | RTF: 0.2736(1.471s / 5.375s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0009_generated.wav | RTF: 0.2870(1.294s / 4.510s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0011_generated.wav | RTF: 0.2688(1.714s / 6.375s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0017_generated.wav | RTF: 0.2957(1.511s / 5.110s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0007_generated.wav | RTF: 0.2842(1.009s / 3.550s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0016_generated.wav | RTF: 0.2877(1.070s / 3.720s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0003_generated.wav | RTF: 0.2725(1.176s / 4.315s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0005_generated.wav | RTF: 0.2846(1.443s / 5.070s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0006_generated.wav | RTF: 0.2805(0.823s / 2.935s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0008_generated.wav | RTF: 0.2981(1.054s / 3.535s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0000_generated.wav | RTF: 0.2906(1.425s / 4.905s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0013_generated.wav | RTF: 0.2913(1.296s / 4.450s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0002_generated.wav | RTF: 0.2783(0.826s / 2.970s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0018_generated.wav | RTF: 0.2736(0.658s / 2.405s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0010_generated.wav | RTF: 0.2721(2.257s / 8.295s)
+generated_audios/generated_H4_128C_pruned50_int8/61-70968-0012_generated.wav | RTF: 0.2846(0.743s / 2.610s)
+Average RTF: 0.2823(25.570s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 3.653593
+  PESQ: 1.106577
+  STOI: 0.316345
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 70% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.70...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0004_generated.wav | RTF: 0.7091(2.755s / 3.885s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0019_generated.wav | RTF: 0.2685(1.470s / 5.475s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0014_generated.wav | RTF: 0.2746(2.055s / 7.485s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0001_generated.wav | RTF: 0.2857(1.031s / 3.610s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0015_generated.wav | RTF: 0.2686(1.443s / 5.375s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0009_generated.wav | RTF: 0.2844(1.283s / 4.510s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0011_generated.wav | RTF: 0.2702(1.722s / 6.375s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0017_generated.wav | RTF: 0.2829(1.446s / 5.110s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0007_generated.wav | RTF: 0.2811(0.998s / 3.550s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0016_generated.wav | RTF: 0.2836(1.055s / 3.720s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0003_generated.wav | RTF: 0.2820(1.217s / 4.315s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0005_generated.wav | RTF: 0.2809(1.424s / 5.070s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0006_generated.wav | RTF: 0.2724(0.800s / 2.935s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0008_generated.wav | RTF: 0.2881(1.019s / 3.535s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0000_generated.wav | RTF: 0.2940(1.442s / 4.905s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0013_generated.wav | RTF: 0.2914(1.297s / 4.450s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0002_generated.wav | RTF: 0.2828(0.840s / 2.970s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0018_generated.wav | RTF: 0.2807(0.675s / 2.405s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0010_generated.wav | RTF: 0.2693(2.234s / 8.295s)
+generated_audios/generated_H4_128C_pruned70_int8/61-70968-0012_generated.wav | RTF: 0.2833(0.740s / 2.610s)
+Average RTF: 0.2975(26.946s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 6.332181
+  PESQ: 1.062410
+  STOI: 0.460759
+
+Appended metrics to CSV: experiments_results.csv
+Appended to experiments_results.csv:
+H4_128C_pruned70_int8,925985,3.617,0.2975,1.0624096095561981,0.4607587866424853,6.332181429862976
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Thu May 28 09:12:13 PM CEST 2026
+= Job-ID             : 1367394 on tinyfat
+= Job-Name           : inference_128ch_h1-4
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:05:01
+= Total RAM usage    : 1.5 GiB of requested  GiB (%)   
+= Node list          : tf066
+= Subm/Elig/Start/End: 2026-05-28T21:07:11 / 2026-05-28T21:07:11 / 2026-05-28T21:07:12 / 2026-05-28T21:12:13
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              98.4G   104.9G   209.7G        N/A  44,405      500K   1,000K        N/A    
+    /home/woody            14.1G  1000.0G  1500.0G        N/A     102K   5,000K   7,500K        N/A    
+======================

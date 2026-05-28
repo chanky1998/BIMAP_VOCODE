@@ -110,7 +110,7 @@ Examples (512 Channels):
 # H1: baseline (no compression)
 python inference.py \
     --output_dir generated_audios/generated_H1_512C \
-    --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
     --config_file config_v1_512.json \
     --experiment_name H1_512C_baseline \
     --csv_file experiments_results.csv
@@ -118,7 +118,7 @@ python inference.py \
 # H2: quantized (INT8 dynamic quantization)
 python inference.py \
     --output_dir generated_audios/generated_H2_512C_int8 \
-    --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
     --config_file config_v1_512.json \
     --experiment_name H2_512C_quantized \
     --csv_file experiments_results.csv \
@@ -127,7 +127,7 @@ python inference.py \
 # H3: pruning 30%
 python inference.py \
     --output_dir generated_audios/generated_H3_512C_pruned30 \
-    --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
     --config_file config_v1_512.json \
     --experiment_name H3_512C_pruned30 \
     --csv_file experiments_results.csv \
@@ -138,7 +138,7 @@ python inference.py \
 # H4: pruning 30% + quantize
 python inference.py \
     --output_dir generated_audios/generated_H4_512C_pruned30_int8 \
-    --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
     --config_file config_v1_512.json \
     --experiment_name H4_512C_pruned30_int8 \
     --csv_file experiments_results.csv \
@@ -198,7 +198,7 @@ grep -c 'H2_' experiments_results.csv
 
 ## Notes and recommendations
 
-- Ensure `test_files_LibriSpeech_wav` contains the reference WAV files used for evaluation.
+- Ensure `LibriSpeech_wav/test` contains the reference WAV files used for evaluation.
 - `inference.py` will prefer GPU if available unless `--quantize` is used (quantized flow forces CPU).
 - To force CPU even without quantization, set `export CUDA_VISIBLE_DEVICES=""` in your shell before running.
 - If you plan to run many jobs concurrently, ensure each job writes to the same global CSV safely (the current `inference.sh` writes directly to `experiments_results.csv`; for highly parallel workflows use a merge step or unique temporary CSVs).
@@ -232,7 +232,7 @@ grep -c 'H2_' experiments_results.csv
 - If issues persist, run without `--quantize` to isolate the problem
 
 ### Degraded audio quality after pruning
-- Reduce pruning ratio (e.g., from 0.5 → 0.3)
+- Reduce pruning ratio (e.g., from 0.7 → 0.3)
 - Avoid aggressive pruning on smaller models (e.g., 128C)
 - Consider fine-tuning the pruned model to recover performance
 - Validate that pruning is applied only to intended layers
@@ -240,13 +240,8 @@ grep -c 'H2_' experiments_results.csv
 ## References
 
 [1] J. Kong, J. Kim, and J. Bae, "HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis," Advances in Neural Information Processing Systems (NeurIPS), vol. 33, pp. 17022–17033, 2020.
-
 [2] A. Mehrish, N. Majumder, R. Bharadwaj, R. Mihalcea, and S. Poria, "A Review of Deep Learning Techniques for Speech Processing," Information Fusion, vol. 99, p. 101869, 2023.
-
 [3] A. Wong, M. Famouri, M. Pavlova, and S. Surana, "TinySpeech: Attention Condensers for Deep Speech Recognition Neural Networks on Edge Devices," arXiv preprint arXiv:2008.04245, 2020.
-
 [4] Z. Mu, X. Yang, and Y. Dong, "Review of End-to-End Speech Synthesis Technology Based on Deep Learning," arXiv preprint arXiv:2104.09995, 2021.
-
 [5] C. Feng et al., "Edge-ASR: Towards Low-Bit Quantization of Automatic Speech Recognition Models," arXiv preprint arXiv:2507.07877, 2025.
-
 [6] H. Jiang et al., "Accurate and Structured Pruning for Efficient Automatic Speech Recognition," arXiv preprint arXiv:2305.19549, 2023.
