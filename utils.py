@@ -97,11 +97,12 @@ def collect_pairs(reference_dir, generated_dir, generated_suffix):
 
 
 def prune_conv_layers(model, amount):
-    """Apply structured pruning to Conv1d and ConvTranspose1d layers and remove pruning wrappers."""
+    """Apply structured output-channel pruning to Conv1d and ConvTranspose1d layers."""
     import torch.nn.utils.prune as prune
 
     for module in model.modules():
         if isinstance(module, (torch.nn.Conv1d, torch.nn.ConvTranspose1d)):
+            # dim=0 prunes whole output channels (structured channel pruning)
             prune.ln_structured(module, name='weight', amount=amount, n=2, dim=0)
             prune.remove(module, 'weight')
 

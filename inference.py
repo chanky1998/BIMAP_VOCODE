@@ -213,7 +213,7 @@ def main():
                         help='Optional path to save the compressed checkpoint')
     parser.add_argument('--experiment_name', default=None,
                         help='Experiment name to record in CSV')
-    parser.add_argument('--csv_file', default='None',
+    parser.add_argument('--csv_file', default=None,
                         help='Optional CSV file to append metrics to')
     parser.add_argument('--generated_suffix', default='_generated',
                         help='Suffix used for generated files (default: _generated)')
@@ -230,13 +230,10 @@ def main():
 
     torch.manual_seed(h.seed)
     global device
-    if a.quantize or not torch.cuda.is_available():
-        device = torch.device('cpu')
-        if a.quantize:
-            print('Quantization enabled: forcing CPU inference for INT8 model.')
-    else:
-        torch.cuda.manual_seed(h.seed)
-        device = torch.device('cuda')
+    device = torch.device('cpu')
+    print('Using device: cpu (baseline and quantized inference both run on CPU)')
+    if a.quantize:
+        print('Quantization enabled: forcing CPU inference for INT8 model.')
 
     inference(a)
 

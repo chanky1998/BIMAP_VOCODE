@@ -109,7 +109,6 @@ Examples (512 Channels):
 ```bash
 # H1: baseline (no compression)
 python inference.py \
-    --input_wavs_dir LibriSpeech_wav/test \
     --output_dir generated_audios/generated_H1_512C \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
@@ -118,7 +117,6 @@ python inference.py \
 
 # H2: quantized (INT8 dynamic quantization)
 python inference.py \
-    --input_wavs_dir LibriSpeech_wav/test \
     --output_dir generated_audios/generated_H2_512C_int8 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
@@ -128,7 +126,6 @@ python inference.py \
 
 # H3: pruning 30%
 python inference.py \
-    --input_wavs_dir LibriSpeech_wav/test \
     --output_dir generated_audios/generated_H3_512C_pruned30 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \
@@ -140,7 +137,6 @@ python inference.py \
 
 # H4: pruning 30% + quantize
 python inference.py \
-    --input_wavs_dir LibriSpeech_wav/test \
     --output_dir generated_audios/generated_H4_512C_pruned30_int8 \
     --checkpoint_file cp_hifigan/v1_c512/g_02655000 \
     --config_file config_v1_512.json \

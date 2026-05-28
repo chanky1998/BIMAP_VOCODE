@@ -203,11 +203,15 @@ def train(rank, a, h):
                     save_checkpoint(latest_do_path, do_state)
                     save_checkpoint(history_do_path, do_state)
 
-                    # keep only the latest checkpoint files in cp_hifigan
+                    # keep only the latest checkpoint files and file(05540000) in cp_hifigan
+                    keep_g = {filename_g, 'g_05540000'}
+                    keep_do = {filename_do, 'do_05540000'}
+
                     for fname in os.listdir(a.checkpoint_path):
-                        if fname.startswith('g_') and fname != filename_g:
+                        if fname.startswith('g_') and fname not in keep_g:
                             os.remove(os.path.join(a.checkpoint_path, fname))
-                        if fname.startswith('do_') and fname != filename_do:
+
+                        if fname.startswith('do_') and fname not in keep_do:
                             os.remove(os.path.join(a.checkpoint_path, fname))
 
                 # Tensorboard summary logging
@@ -271,7 +275,7 @@ def main():
     parser.add_argument('--checkpoint_path', default='cp_hifigan/v1_test01') # $HOME
     parser.add_argument('--history_checkpoint_path', default='/home/woody/vlbi/vlbi107v/cp_hifigan/v1_test01') # $WORK
     parser.add_argument('--config', default='')
-    parser.add_argument('--training_epochs', default=3100, type=int) #default=3100
+    parser.add_argument('--training_epochs', default=5000, type=int) #default=3100
     parser.add_argument('--stdout_interval', default=5, type=int)
     parser.add_argument('--checkpoint_interval', default=5000, type=int) #default=5000; steps = 每个 epoch 的 batch 数 × epoch 数
     parser.add_argument('--summary_interval', default=100, type=int)
