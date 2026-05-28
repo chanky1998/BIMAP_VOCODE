@@ -182,6 +182,11 @@ print('\n=== H3 pruning by ratio ===')
 for ratio in [0.3, 0.5, 0.7]:
         mask = (df['experiment_name'].str.contains('H3')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
         print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','pesq']])
+
+print('\n=== H4 pruning + quantization ===')
+for ratio in [0.3, 0.5, 0.7]:
+        mask = (df['experiment_name'].str.contains('H4')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
+        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','pesq']])
 ```
 
 ### Bash
