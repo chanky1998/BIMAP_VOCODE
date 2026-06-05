@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=inference_128ch_h1-4
+#SBATCH --job-name=inference_512ch_h1-4
 #SBATCH --clusters=tinyfat
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -21,11 +21,11 @@ conda activate hifi-gan
 cd $HOME/hifi-gan
 export CUDA_VISIBLE_DEVICES=""
 
-EXP_NAME="128 Channels (g_05540000)"
-CONFIG_FILE="cp_hifigan/v1_c128/config.json"
-CHECKPOINT_FILE="$HOME/hifi-gan/cp_hifigan/v1_c128/g_05540000"
+EXP_NAME="512 Channels (g_05540000)"
+CONFIG_FILE="cp_hifigan/v1_c512/config.json"
+CHECKPOINT_FILE="$HOME/hifi-gan/cp_hifigan/v1_c512/g_05540000"
 CSV="experiments_results.csv"
-CHANNEL="128C"
+CHANNEL="512C"
 
 
 echo "==========(sbatch.tinyfat) Inference: ${EXP_NAME} =========="
@@ -46,6 +46,15 @@ srun.tinyfat python inference.py \
     --experiment_name H2_${CHANNEL}_quantized \
 	--csv_file "${CSV}" \
     --quantize
+
+echo "========== H3: pruning 0% (test)=========="
+srun.tinyfat python inference.py \
+    --output_dir generated_audios/generated_H3_${CHANNEL}_pruned0 \
+	--checkpoint_file ${CHECKPOINT_FILE} \
+	--config_file ${CONFIG_FILE} \
+    --experiment_name H3_${CHANNEL}_pruned0 \
+	--csv_file "${CSV}" \
+    --prune_ratio 0.0 
 
 echo "========== H3: pruning 30% =========="
 srun.tinyfat python inference.py \

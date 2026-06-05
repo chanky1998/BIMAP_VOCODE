@@ -96,15 +96,45 @@ def collect_pairs(reference_dir, generated_dir, generated_suffix):
     return pairs
 
 
-def prune_conv_layers(model, amount):
-    """Apply structured output-channel pruning to Conv1d and ConvTranspose1d layers."""
+def prune_conv_layers(model, amount, prune_convtranspose=False, prune_resblocks_only=True):
+    """Apply structured output-channel pruning to Conv1d layers and optionally ConvTranspose1d layers.
+
+    Default behavior is conservative: prune only Conv1d layers inside resblocks, and skip
+    conv_pre/conv_post. ConvTranspose1d pruning is disabled unless explicitly requested.
+    """
     import torch.nn.utils.prune as prune
 
-    for module in model.modules():
-        if isinstance(module, (torch.nn.Conv1d, torch.nn.ConvTranspose1d)):
-            # dim=0 prunes whole output channels (structured channel pruning)
-            prune.ln_structured(module, name='weight', amount=amount, n=2, dim=0)
-            prune.remove(module, 'weight')
+    for name, module in model.named_modules():
+        if isinstance(module, torch.nn.Conv1d):
+            if prune_resblocks_only:
+                if not name.startswith('resblocks.'):
+                    continue
+            elif name in ('conv_pre', 'conv_post'):
+                continue
+            prune_dim = 0
+            out_channels = module.out_channels
+        elif isinstance(module, torch.nn.ConvTranspose1d):
+            if not prune_convtranspose:
+                print(f"Skipping ConvTranspose1d pruning for {name}")
+                continue
+            prune_dim = 1
+            out_channels = module.out_channels
+        else:
+            continue
+
+        if out_channels <= 1:
+            print(f"Skipping pruning for {name} ({module.__class__.__name__}) with out_channels={out_channels}")
+            continue
+
+        groups = getattr(module, 'groups', 1)
+        if groups != 1:
+            print(f"Skipping pruning for {name} ({module.__class__.__name__}) with groups={groups}")
+            continue
+
+        print(f"Pruning {name} ({module.__class__.__name__}): out_channels={out_channels}, dim={prune_dim}, amount={amount}")
+        prune.ln_structured(module, name='weight', amount=amount, n=2, dim=prune_dim)
+        prune.remove(module, 'weight')
+        print(f"Done pruning {name} ({module.__class__.__name__})")
 
     return model
 

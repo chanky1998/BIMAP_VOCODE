@@ -1,0 +1,217 @@
+### Starting TaskPrologue of job 1367742 on tf063 at Fri May 29 12:36:27 PM CEST 2026
+Running on cores 0-7,64-71 with governor ondemand
+No GPU known
+### Finished TaskPrologue
+
+==========(sbatch.tinyfat) Inference: 128 Channels (g_05540000) ==========
+========== H3: pruning 0% (test)==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000'
+Complete.
+Removing weight norm...
+Applying structured pruning with ratio 0.10...
+Pruning Conv1d: out_channels=128, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning ConvTranspose1d: out_channels=64, dim=1, amount=0.1
+Done pruning ConvTranspose1d
+Pruning ConvTranspose1d: out_channels=32, dim=1, amount=0.1
+Done pruning ConvTranspose1d
+Pruning ConvTranspose1d: out_channels=16, dim=1, amount=0.1
+Done pruning ConvTranspose1d
+Pruning ConvTranspose1d: out_channels=8, dim=1, amount=0.1
+Done pruning ConvTranspose1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=64, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=32, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=16, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Pruning Conv1d: out_channels=8, dim=0, amount=0.1
+Done pruning Conv1d
+Skipping pruning for Conv1d with out_channels=1
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c128/g_05540000 (3.617 MB)
+Generator parameters: 925,985
+generated_audios/generated_H3_128C_pruned10/61-70968-0004_generated.wav | RTF: 0.3176(1.234s / 3.885s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0019_generated.wav | RTF: 0.2586(1.416s / 5.475s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0014_generated.wav | RTF: 0.2694(2.017s / 7.485s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0001_generated.wav | RTF: 0.2705(0.977s / 3.610s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0015_generated.wav | RTF: 0.2582(1.388s / 5.375s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0009_generated.wav | RTF: 0.2749(1.240s / 4.510s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0011_generated.wav | RTF: 0.2582(1.646s / 6.375s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0017_generated.wav | RTF: 0.2764(1.412s / 5.110s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0007_generated.wav | RTF: 0.2778(0.986s / 3.550s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0016_generated.wav | RTF: 0.2860(1.064s / 3.720s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0003_generated.wav | RTF: 0.2666(1.150s / 4.315s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0005_generated.wav | RTF: 0.2694(1.366s / 5.070s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0006_generated.wav | RTF: 0.2570(0.754s / 2.935s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0008_generated.wav | RTF: 0.2696(0.953s / 3.535s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0000_generated.wav | RTF: 0.2703(1.326s / 4.905s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0013_generated.wav | RTF: 0.2744(1.221s / 4.450s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0002_generated.wav | RTF: 0.2627(0.780s / 2.970s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0018_generated.wav | RTF: 0.2609(0.627s / 2.405s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0010_generated.wav | RTF: 0.2568(2.130s / 8.295s)
+generated_audios/generated_H3_128C_pruned10/61-70968-0012_generated.wav | RTF: 0.2648(0.691s / 2.610s)
+Average RTF: 0.2691(24.379s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 2.088067
+  PESQ: 1.062852
+  STOI: 0.569009
+
+Appended metrics to CSV: experiments_results.csv
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Fri May 29 12:37:12 PM CEST 2026
+= Job-ID             : 1367742 on tinyfat
+= Job-Name           : inference_128ch_test
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference_Test.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:00:45
+= Total RAM usage    : 1.5 GiB of requested  GiB (%)   
+= Node list          : tf063
+= Subm/Elig/Start/End: 2026-05-29T12:36:26 / 2026-05-29T12:36:26 / 2026-05-29T12:36:26 / 2026-05-29T12:37:11
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/woody            97.4G  1000.0G  1500.0G        N/A     116K   5,000K   7,500K        N/A    
+!!! /home/hpc             105.5G   104.9G   209.7G  -29101days      60K     500K   1,000K        N/A !!!
+======================

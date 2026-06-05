@@ -72,7 +72,7 @@ def inference(a):
 
     if a.prune_ratio > 0:
         print(f"Applying structured pruning with ratio {a.prune_ratio:.2f}...")
-        prune_conv_layers(generator, a.prune_ratio)
+        prune_conv_layers(generator, a.prune_ratio, prune_convtranspose=a.prune_convtranspose)
 
     if a.quantize:
         if device.type != 'cpu':
@@ -206,7 +206,9 @@ def main():
     parser.add_argument('--config_file', required=True)
     parser.add_argument('--quantize', action='store_true', help='Apply INT8 dynamic quantization to the generator')
     parser.add_argument('--prune_ratio', default=0.0, type=float,
-                        help='Structured pruning ratio for Conv1d and ConvTranspose1d weights')
+                        help='Structured pruning ratio for Conv1d weights (ConvTranspose1d pruning is disabled by default)')
+    parser.add_argument('--prune_convtranspose', action='store_true',
+                        help='Also prune ConvTranspose1d output channels when using --prune_ratio')
     parser.add_argument('--save_compressed_checkpoint', action='store_true',
                         help='Save the pruned / quantized model checkpoint')
     parser.add_argument('--compressed_checkpoint_file', default=None,

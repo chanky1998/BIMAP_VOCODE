@@ -109,7 +109,7 @@ def train(rank, a, h):
                                        pin_memory=True,
                                        drop_last=True)
 
-        sw = SummaryWriter(os.path.join(a.checkpoint_path, 'logs'))
+        sw = SummaryWriter(os.path.join(a.tensorboard_logs_path, 'logs'))
 
     generator.train()
     mpd.train()
@@ -272,8 +272,9 @@ def main():
     parser.add_argument('--input_mels_dir', default='ft_dataset')
     parser.add_argument('--input_training_file', default='LibriSpeech_wav/training.txt') #default='LJSpeech-1.1/training.txt'
     parser.add_argument('--input_validation_file', default='LibriSpeech_wav/validation.txt')
-    parser.add_argument('--checkpoint_path', default='cp_hifigan/v1_test01') # $HOME
-    parser.add_argument('--history_checkpoint_path', default='/home/woody/vlbi/vlbi107v/cp_hifigan/v1_test01') # $WORK
+    parser.add_argument('--checkpoint_path', default='cp_hifigan/v1_c512') # $HOME
+    parser.add_argument('--tensorboard_logs_path', default='/home/woody/vlbi/vlbi107v/logs/v1_c512') # $WORK
+    parser.add_argument('--history_checkpoint_path', default='/home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512') # $WORK
     parser.add_argument('--config', default='')
     parser.add_argument('--training_epochs', default=5000, type=int) #default=3100
     parser.add_argument('--stdout_interval', default=5, type=int)
