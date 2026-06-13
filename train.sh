@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=train_256ch
+#SBATCH --job-name=train_512ch
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -20,8 +20,8 @@ conda activate hifi-gan
 
 cd $HOME/hifi-gan
 
-echo "========== Training Model 256 Channels =========="
-srun python train.py --config config_v1_256.json \
-    --checkpoint_path $HOME/hifi-gan/cp_hifigan/v1_c256 \
-    --history_checkpoint_path $WORK/cp_hifigan/v1_c256 \
-    --tensorboard_logs_path $WORK/logs/v1_c256
+echo "========== Training Model 512 Channels =========="
+srun python train.py --config config_v1_512.json \
+    --checkpoint_path $HOME/hifi-gan/cp_hifigan/v1_c512 \
+    --history_checkpoint_path $WORK/cp_hifigan/v1_c512 \
+    --tensorboard_logs_path $WORK/logs/v1_c512 

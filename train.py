@@ -16,9 +16,25 @@ from env import AttrDict, build_env
 from meldataset import MelDataset, mel_spectrogram, get_dataset_filelist
 from models import Generator, MultiPeriodDiscriminator, MultiScaleDiscriminator, feature_loss, generator_loss,\
     discriminator_loss
-from utils import plot_spectrogram, scan_checkpoint, load_checkpoint, save_checkpoint
+from utils import plot_spectrogram, scan_checkpoint, load_checkpoint, save_checkpoint, prune_conv_layers_with_mask
 
 torch.backends.cudnn.benchmark = True
+
+
+def apply_pruning_mask(model):
+    """Apply pruning masks to gradients and weights to keep pruned parameters at zero during training."""
+    for module in model.modules():
+        if hasattr(module, 'weight_mask'):
+            if hasattr(module, 'weight_orig') and module.weight_orig.grad is not None:
+                # Mask gradients
+                module.weight_orig.grad.mul_(module.weight_mask)
+            # Mask weights after optimizer step
+            if hasattr(module, 'weight_orig'):
+                module.weight_orig.data.mul_(module.weight_mask)
+
+
+def checkpoint_is_masked(state_dict):
+    return any(k.endswith('.weight_orig') or k.endswith('.weight_mask') for k in state_dict.keys())
 
 
 def train(rank, a, h):
@@ -50,22 +66,67 @@ def train(rank, a, h):
         print("checkpoints directory : ", a.checkpoint_path)
         print("history checkpoints directory : ", a.history_checkpoint_path)
 
-    if os.path.isdir(a.checkpoint_path):
+    # determine checkpoints to load (allow explicit override via --init_checkpoint)
+    cp_g = None
+    cp_do = None
+
+    if hasattr(a, 'init_checkpoint') and a.init_checkpoint:
+        # When using explicit init_checkpoint, only load generator weights
+        # Skip optimizer state to avoid parameter size mismatch after pruning
+        cp_g = a.init_checkpoint
+        cp_do = None
+        if rank == 0:
+            print(f"Loading generator from explicit checkpoint: {cp_g}")
+            print("Skipping optimizer state (will be re-initialized)")
+
+    if cp_g is None and os.path.isdir(a.checkpoint_path):
         cp_g = scan_checkpoint(a.checkpoint_path, 'g_')
         cp_do = scan_checkpoint(a.checkpoint_path, 'do_')
 
     steps = 0
+    checkpoint_pruned = False
     if cp_g is None or cp_do is None:
         state_dict_do = None
         last_epoch = -1
+        if cp_g is not None:
+            state_dict_g = load_checkpoint(cp_g, device)
+            checkpoint_pruned = checkpoint_is_masked(state_dict_g['generator'])
+            if checkpoint_pruned:
+                if rank == 0:
+                    print("Loaded masked pruned generator checkpoint.")
+                generator.remove_weight_norm()
+                prune_conv_layers_with_mask(generator, max(a.prune_ratio, 0.0), prune_convtranspose=a.prune_convtranspose)
+                generator.load_state_dict(state_dict_g['generator'])
+            else:
+                generator.load_state_dict(state_dict_g['generator'])
     else:
         state_dict_g = load_checkpoint(cp_g, device)
         state_dict_do = load_checkpoint(cp_do, device)
-        generator.load_state_dict(state_dict_g['generator'])
+        checkpoint_pruned = checkpoint_is_masked(state_dict_g['generator'])
+        if checkpoint_pruned:
+            if rank == 0:
+                print("Loaded masked pruned generator checkpoint.")
+            generator.remove_weight_norm()
+            prune_conv_layers_with_mask(generator, max(a.prune_ratio, 0.0), prune_convtranspose=a.prune_convtranspose)
+            generator.load_state_dict(state_dict_g['generator'])
+        else:
+            generator.load_state_dict(state_dict_g['generator'])
         mpd.load_state_dict(state_dict_do['mpd'])
         msd.load_state_dict(state_dict_do['msd'])
         steps = state_dict_do['steps'] + 1
         last_epoch = state_dict_do['epoch']
+
+    # Apply pruning with mask for fine-tuning if prune_ratio is specified and checkpoint was not already pruned
+    if a.prune_ratio > 0 and not checkpoint_pruned:
+        if rank == 0:
+            print(f"Applying masked pruning (fine-tuning mode) with ratio {a.prune_ratio:.2f}...")
+        generator.remove_weight_norm()
+        prune_conv_layers_with_mask(generator, a.prune_ratio, prune_convtranspose=a.prune_convtranspose)
+        if rank == 0:
+            print("Masked pruning applied. Pruned parameters will be kept at zero during training.")
+    elif checkpoint_pruned and a.prune_ratio > 0:
+        if rank == 0:
+            print("Checkpoint already contains pruning masks; --prune_ratio is ignored for this load.")
 
     if h.num_gpus > 1:
         generator = DistributedDataParallel(generator, device_ids=[rank]).to(device)
@@ -165,7 +226,14 @@ def train(rank, a, h):
             loss_gen_all = loss_gen_s + loss_gen_f + loss_fm_s + loss_fm_f + loss_mel
 
             loss_gen_all.backward()
+            
+            # Apply pruning mask to gradients before optimizer step
+            apply_pruning_mask(generator)
+            
             optim_g.step()
+            
+            # Apply pruning mask to weights after optimizer step
+            apply_pruning_mask(generator)
 
             if rank == 0:
                 # STDOUT logging
@@ -204,8 +272,8 @@ def train(rank, a, h):
                     save_checkpoint(history_do_path, do_state)
 
                     # keep only the latest checkpoint files and file(05540000) in cp_hifigan
-                    keep_g = {filename_g, 'g_05540000'}
-                    keep_do = {filename_do, 'do_05540000'}
+                    keep_g = {filename_g,'g_07640000','g_07960000'}
+                    keep_do = {filename_do,'do_07640000','do_07960000'}
 
                     for fname in os.listdir(a.checkpoint_path):
                         if fname.startswith('g_') and fname not in keep_g:
@@ -282,6 +350,12 @@ def main():
     parser.add_argument('--summary_interval', default=100, type=int)
     parser.add_argument('--validation_interval', default=1000, type=int)
     parser.add_argument('--fine_tuning', default=False, type=bool)
+    parser.add_argument('--prune_ratio', default=0.0, type=float,
+                        help='Structured pruning ratio for fine-tuning (with mask). For example, 0.3 means 30% pruning.')
+    parser.add_argument('--prune_convtranspose', action='store_true',
+                        help='Also prune ConvTranspose1d layers when --prune_ratio > 0')
+    parser.add_argument('--init_checkpoint', default=None,
+                        help='Optional path to a specific generator checkpoint to load at start (overrides automatic scan)')
 
     a = parser.parse_args()
 

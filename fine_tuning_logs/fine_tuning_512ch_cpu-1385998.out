@@ -1,0 +1,876 @@
+### Starting TaskPrologue of job 1385998 on tf060 at Fri Jun 12 05:09:52 PM CEST 2026
+Running on cores 6-11,14-15,70-75,78-79 with governor ondemand
+No GPU known
+### Finished TaskPrologue
+
+========== Fine-Tuning Model 512 Channels (sbatch.tinyfat)==========
+Initializing Training Process..
+Using CPU
+Generator(
+  (conv_pre): Conv1d(80, 512, kernel_size=(7,), stride=(1,), padding=(3,))
+  (ups): ModuleList(
+    (0): ConvTranspose1d(512, 256, kernel_size=(16,), stride=(8,), padding=(4,))
+    (1): ConvTranspose1d(256, 128, kernel_size=(16,), stride=(8,), padding=(4,))
+    (2): ConvTranspose1d(128, 64, kernel_size=(4,), stride=(2,), padding=(1,))
+    (3): ConvTranspose1d(64, 32, kernel_size=(4,), stride=(2,), padding=(1,))
+  )
+  (resblocks): ModuleList(
+    (0): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (1): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (2): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (3): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (4): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (5): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (6): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (7): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (8): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (9): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (10): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (11): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+  )
+  (conv_post): Conv1d(32, 1, kernel_size=(7,), stride=(1,), padding=(3,))
+)
+checkpoints directory :  /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30
+history checkpoints directory :  /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30
+Loading generator from explicit checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512/g_07640000
+Skipping optimizer state (will be re-initialized)
+Applying masked pruning (fine-tuning mode) with ratio 0.30...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.3
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.3
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.3
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.3
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Masked pruning applied. Pruned parameters will be kept at zero during training.
+Epoch: 1
+Steps : 0, Gen Loss Total : 99.573, Mel-Spec. Error : 2.062, s/b : 14.813
+Steps : 5, Gen Loss Total : 92.153, Mel-Spec. Error : 1.975, s/b : 13.053
+Steps : 10, Gen Loss Total : 74.949, Mel-Spec. Error : 1.597, s/b : 17.724
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000010
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000010
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000010
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000010
+Complete.
+Steps : 15, Gen Loss Total : 81.932, Mel-Spec. Error : 1.732, s/b : 13.573
+Steps : 20, Gen Loss Total : 72.552, Mel-Spec. Error : 1.469, s/b : 14.080
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000020
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000020
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000020
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000020
+Complete.
+Steps : 25, Gen Loss Total : 67.726, Mel-Spec. Error : 1.362, s/b : 15.688
+Steps : 30, Gen Loss Total : 75.482, Mel-Spec. Error : 1.535, s/b : 17.120
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000030
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000030
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000030
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000030
+Complete.
+Steps : 35, Gen Loss Total : 64.315, Mel-Spec. Error : 1.288, s/b : 14.347
+Steps : 40, Gen Loss Total : 73.095, Mel-Spec. Error : 1.400, s/b : 22.598
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000040
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000040
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000040
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000040
+Complete.
+Steps : 45, Gen Loss Total : 71.424, Mel-Spec. Error : 1.427, s/b : 13.199
+Steps : 50, Gen Loss Total : 71.241, Mel-Spec. Error : 1.385, s/b : 14.124
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000050
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000050
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000050
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000050
+Complete.
+Steps : 55, Gen Loss Total : 72.398, Mel-Spec. Error : 1.435, s/b : 13.317
+Steps : 60, Gen Loss Total : 59.095, Mel-Spec. Error : 1.111, s/b : 13.511
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000060
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000060
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000060
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000060
+Complete.
+Steps : 65, Gen Loss Total : 61.417, Mel-Spec. Error : 1.112, s/b : 13.554
+Steps : 70, Gen Loss Total : 64.864, Mel-Spec. Error : 1.174, s/b : 18.481
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000070
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000070
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000070
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000070
+Complete.
+Steps : 75, Gen Loss Total : 70.722, Mel-Spec. Error : 1.310, s/b : 13.009
+Steps : 80, Gen Loss Total : 65.070, Mel-Spec. Error : 1.178, s/b : 13.926
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000080
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000080
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000080
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000080
+Complete.
+Steps : 85, Gen Loss Total : 58.101, Mel-Spec. Error : 1.052, s/b : 14.366
+Steps : 90, Gen Loss Total : 66.038, Mel-Spec. Error : 1.206, s/b : 14.495
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000090
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000090
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000090
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000090
+Complete.
+Steps : 95, Gen Loss Total : 67.002, Mel-Spec. Error : 1.229, s/b : 13.364
+Steps : 100, Gen Loss Total : 67.547, Mel-Spec. Error : 1.205, s/b : 14.078
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000100
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000100
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000100
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000100
+Complete.
+Steps : 105, Gen Loss Total : 56.721, Mel-Spec. Error : 0.978, s/b : 13.372
+Steps : 110, Gen Loss Total : 59.319, Mel-Spec. Error : 1.132, s/b : 12.824
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000110
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000110
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000110
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000110
+Complete.
+Steps : 115, Gen Loss Total : 58.712, Mel-Spec. Error : 1.118, s/b : 26.897
+Steps : 120, Gen Loss Total : 58.797, Mel-Spec. Error : 0.983, s/b : 42.293
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000120
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000120
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000120
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000120
+Complete.
+Steps : 125, Gen Loss Total : 64.479, Mel-Spec. Error : 1.123, s/b : 18.413
+Steps : 130, Gen Loss Total : 58.775, Mel-Spec. Error : 1.031, s/b : 15.578
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000130
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000130
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000130
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000130
+Complete.
+Steps : 135, Gen Loss Total : 59.771, Mel-Spec. Error : 1.060, s/b : 13.959
+Steps : 140, Gen Loss Total : 52.670, Mel-Spec. Error : 0.894, s/b : 39.735
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000140
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000140
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000140
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000140
+Complete.
+Steps : 145, Gen Loss Total : 57.746, Mel-Spec. Error : 0.960, s/b : 26.113
+Steps : 150, Gen Loss Total : 57.862, Mel-Spec. Error : 1.009, s/b : 13.827
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000150
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000150
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000150
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000150
+Complete.
+Steps : 155, Gen Loss Total : 55.767, Mel-Spec. Error : 0.940, s/b : 20.458
+Steps : 160, Gen Loss Total : 54.943, Mel-Spec. Error : 0.929, s/b : 28.250
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000160
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000160
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000160
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000160
+Complete.
+Steps : 165, Gen Loss Total : 54.166, Mel-Spec. Error : 0.928, s/b : 22.127
+Steps : 170, Gen Loss Total : 51.636, Mel-Spec. Error : 0.902, s/b : 12.777
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000170
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000170
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000170
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000170
+Complete.
+Steps : 175, Gen Loss Total : 56.770, Mel-Spec. Error : 1.027, s/b : 17.760
+Steps : 180, Gen Loss Total : 49.736, Mel-Spec. Error : 0.842, s/b : 22.762
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000180
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000180
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000180
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000180
+Complete.
+Steps : 185, Gen Loss Total : 52.726, Mel-Spec. Error : 0.918, s/b : 26.457
+Steps : 190, Gen Loss Total : 56.097, Mel-Spec. Error : 0.978, s/b : 30.887
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000190
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000190
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000190
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000190
+Complete.
+Steps : 195, Gen Loss Total : 58.103, Mel-Spec. Error : 1.047, s/b : 40.097
+Steps : 200, Gen Loss Total : 59.100, Mel-Spec. Error : 1.007, s/b : 28.425
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000200
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000200
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000200
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000200
+Complete.
+Steps : 205, Gen Loss Total : 58.944, Mel-Spec. Error : 1.021, s/b : 37.210
+Steps : 210, Gen Loss Total : 49.264, Mel-Spec. Error : 0.884, s/b : 20.321
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000210
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000210
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000210
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000210
+Complete.
+Steps : 215, Gen Loss Total : 55.940, Mel-Spec. Error : 0.880, s/b : 31.691
+Steps : 220, Gen Loss Total : 47.991, Mel-Spec. Error : 0.834, s/b : 22.355
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000220
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000220
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000220
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000220
+Complete.
+Steps : 225, Gen Loss Total : 49.979, Mel-Spec. Error : 0.845, s/b : 18.779
+Steps : 230, Gen Loss Total : 51.103, Mel-Spec. Error : 0.822, s/b : 24.827
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000230
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000230
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000230
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000230
+Complete.
+Steps : 235, Gen Loss Total : 50.658, Mel-Spec. Error : 0.860, s/b : 36.306
+Steps : 240, Gen Loss Total : 51.259, Mel-Spec. Error : 0.851, s/b : 16.251
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000240
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000240
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000240
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000240
+Complete.
+Steps : 245, Gen Loss Total : 48.037, Mel-Spec. Error : 0.788, s/b : 40.009
+Steps : 250, Gen Loss Total : 51.383, Mel-Spec. Error : 0.895, s/b : 17.346
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000250
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000250
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000250
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000250
+Complete.
+Steps : 255, Gen Loss Total : 50.861, Mel-Spec. Error : 0.858, s/b : 31.132
+Steps : 260, Gen Loss Total : 53.907, Mel-Spec. Error : 0.924, s/b : 19.402
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000260
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000260
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000260
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000260
+Complete.
+Steps : 265, Gen Loss Total : 51.116, Mel-Spec. Error : 0.832, s/b : 25.484
+Steps : 270, Gen Loss Total : 48.269, Mel-Spec. Error : 0.805, s/b : 24.626
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000270
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000270
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000270
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000270
+Complete.
+Steps : 275, Gen Loss Total : 48.967, Mel-Spec. Error : 0.823, s/b : 13.163
+Steps : 280, Gen Loss Total : 47.386, Mel-Spec. Error : 0.830, s/b : 32.409
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000280
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000280
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000280
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000280
+Complete.
+Steps : 285, Gen Loss Total : 51.322, Mel-Spec. Error : 0.958, s/b : 17.644
+Steps : 290, Gen Loss Total : 49.217, Mel-Spec. Error : 0.845, s/b : 13.260
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000290
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000290
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000290
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000290
+Complete.
+Steps : 295, Gen Loss Total : 43.199, Mel-Spec. Error : 0.743, s/b : 31.577
+Steps : 300, Gen Loss Total : 53.941, Mel-Spec. Error : 0.988, s/b : 13.260
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000300
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000300
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000300
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000300
+Complete.
+Steps : 305, Gen Loss Total : 42.191, Mel-Spec. Error : 0.744, s/b : 32.701
+Steps : 310, Gen Loss Total : 42.265, Mel-Spec. Error : 0.739, s/b : 29.431
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000310
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000310
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000310
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000310
+Complete.
+Steps : 315, Gen Loss Total : 46.782, Mel-Spec. Error : 0.860, s/b : 55.371
+Steps : 320, Gen Loss Total : 39.339, Mel-Spec. Error : 0.722, s/b : 33.772
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000320
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000320
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000320
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000320
+Complete.
+Steps : 325, Gen Loss Total : 45.957, Mel-Spec. Error : 0.774, s/b : 36.152
+Steps : 330, Gen Loss Total : 44.938, Mel-Spec. Error : 0.832, s/b : 56.347
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000330
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000330
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000330
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000330
+Complete.
+Steps : 335, Gen Loss Total : 44.810, Mel-Spec. Error : 0.807, s/b : 22.530
+Steps : 340, Gen Loss Total : 50.343, Mel-Spec. Error : 0.876, s/b : 13.923
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000340
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000340
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000340
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000340
+Complete.
+Steps : 345, Gen Loss Total : 45.449, Mel-Spec. Error : 0.812, s/b : 18.978
+Steps : 350, Gen Loss Total : 40.530, Mel-Spec. Error : 0.730, s/b : 20.203
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000350
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000350
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000350
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000350
+Complete.
+Steps : 355, Gen Loss Total : 46.630, Mel-Spec. Error : 0.860, s/b : 30.385
+Steps : 360, Gen Loss Total : 44.924, Mel-Spec. Error : 0.848, s/b : 25.114
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000360
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000360
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000360
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000360
+Complete.
+Steps : 365, Gen Loss Total : 34.356, Mel-Spec. Error : 0.622, s/b : 25.364
+Steps : 370, Gen Loss Total : 42.339, Mel-Spec. Error : 0.740, s/b : 19.602
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000370
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000370
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000370
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000370
+Complete.
+Steps : 375, Gen Loss Total : 39.790, Mel-Spec. Error : 0.681, s/b : 24.664
+Steps : 380, Gen Loss Total : 38.635, Mel-Spec. Error : 0.728, s/b : 21.773
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000380
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000380
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000380
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000380
+Complete.
+Steps : 385, Gen Loss Total : 39.529, Mel-Spec. Error : 0.710, s/b : 15.617
+Steps : 390, Gen Loss Total : 40.073, Mel-Spec. Error : 0.654, s/b : 27.134
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000390
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000390
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000390
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000390
+Complete.
+Steps : 395, Gen Loss Total : 37.626, Mel-Spec. Error : 0.619, s/b : 37.705
+Steps : 400, Gen Loss Total : 39.621, Mel-Spec. Error : 0.685, s/b : 20.106
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000400
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000400
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000400
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000400
+Complete.
+Steps : 405, Gen Loss Total : 40.396, Mel-Spec. Error : 0.747, s/b : 16.182
+Steps : 410, Gen Loss Total : 38.680, Mel-Spec. Error : 0.646, s/b : 29.467
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000410
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000410
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000410
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000410
+Complete.
+Steps : 415, Gen Loss Total : 45.564, Mel-Spec. Error : 0.774, s/b : 22.392
+Steps : 420, Gen Loss Total : 36.547, Mel-Spec. Error : 0.621, s/b : 22.288
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000420
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000420
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000420
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000420
+Complete.
+Steps : 425, Gen Loss Total : 48.554, Mel-Spec. Error : 0.847, s/b : 28.805
+Steps : 430, Gen Loss Total : 40.092, Mel-Spec. Error : 0.684, s/b : 21.387
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000430
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000430
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000430
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000430
+Complete.
+Steps : 435, Gen Loss Total : 41.263, Mel-Spec. Error : 0.715, s/b : 13.509
+Steps : 440, Gen Loss Total : 48.121, Mel-Spec. Error : 0.872, s/b : 28.605
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000440
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000440
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000440
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000440
+Complete.
+Steps : 445, Gen Loss Total : 40.553, Mel-Spec. Error : 0.674, s/b : 14.070
+Steps : 450, Gen Loss Total : 38.486, Mel-Spec. Error : 0.676, s/b : 28.955
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000450
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000450
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000450
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000450
+Complete.
+Steps : 455, Gen Loss Total : 37.184, Mel-Spec. Error : 0.657, s/b : 17.443
+Steps : 460, Gen Loss Total : 38.767, Mel-Spec. Error : 0.674, s/b : 20.203
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000460
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000460
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000460
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000460
+Complete.
+Steps : 465, Gen Loss Total : 40.922, Mel-Spec. Error : 0.716, s/b : 22.544
+Steps : 470, Gen Loss Total : 38.770, Mel-Spec. Error : 0.704, s/b : 34.242
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000470
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000470
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000470
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000470
+Complete.
+Steps : 475, Gen Loss Total : 42.750, Mel-Spec. Error : 0.709, s/b : 28.174
+Steps : 480, Gen Loss Total : 39.170, Mel-Spec. Error : 0.673, s/b : 27.050
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000480
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000480
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000480
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000480
+Complete.
+Steps : 485, Gen Loss Total : 46.112, Mel-Spec. Error : 0.786, s/b : 18.467
+Steps : 490, Gen Loss Total : 33.105, Mel-Spec. Error : 0.567, s/b : 19.431
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000490
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000490
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000490
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000490
+Complete.
+Steps : 495, Gen Loss Total : 41.869, Mel-Spec. Error : 0.676, s/b : 72.781
+Steps : 500, Gen Loss Total : 38.826, Mel-Spec. Error : 0.650, s/b : 72.475
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000500
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000500
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000500
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000500
+Complete.
+Steps : 505, Gen Loss Total : 42.314, Mel-Spec. Error : 0.694, s/b : 72.585
+Steps : 510, Gen Loss Total : 36.294, Mel-Spec. Error : 0.610, s/b : 72.373
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000510
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000510
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000510
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000510
+Complete.
+Steps : 515, Gen Loss Total : 38.004, Mel-Spec. Error : 0.640, s/b : 19.694
+Steps : 520, Gen Loss Total : 37.592, Mel-Spec. Error : 0.602, s/b : 71.801
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000520
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000520
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000520
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000520
+Complete.
+Steps : 525, Gen Loss Total : 37.536, Mel-Spec. Error : 0.652, s/b : 72.427
+Steps : 530, Gen Loss Total : 36.505, Mel-Spec. Error : 0.618, s/b : 72.043
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000530
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000530
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000530
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000530
+Complete.
+Steps : 535, Gen Loss Total : 36.374, Mel-Spec. Error : 0.622, s/b : 72.453
+Steps : 540, Gen Loss Total : 40.923, Mel-Spec. Error : 0.635, s/b : 72.438
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000540
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000540
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000540
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000540
+Complete.
+Steps : 545, Gen Loss Total : 40.125, Mel-Spec. Error : 0.644, s/b : 72.152
+Steps : 550, Gen Loss Total : 38.910, Mel-Spec. Error : 0.605, s/b : 72.459
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000550
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000550
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000550
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000550
+Complete.
+Steps : 555, Gen Loss Total : 37.731, Mel-Spec. Error : 0.580, s/b : 13.755
+Steps : 560, Gen Loss Total : 37.234, Mel-Spec. Error : 0.583, s/b : 13.811
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/g_00000560
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/g_00000560
+Complete.
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft30/do_00000560
+Complete.
+Saving checkpoint to /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft30/do_00000560
+Complete.
+=== JOB_STATISTICS ===
+=== current date     : Sat Jun 13 05:10:18 PM CEST 2026
+= Job-ID             : 1385998 on tinyfat
+= Job-Name           : fine_tuning_512ch_cpu
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/fine_tuning_train_cpu.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 1-00:00:00
+= Elapsed runtime    : 1-00:00:21
+= Total RAM usage    : 31.2 GiB of requested  GiB (%)   
+= Node list          : tf060
+= Subm/Elig/Start/End: 2026-06-12T17:09:51 / 2026-06-12T17:09:51 / 2026-06-12T17:09:52 / 2026-06-13T17:10:13
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              55.4G   104.9G   209.7G        N/A      64K     500K   1,000K        N/A    
+    /home/woody           723.7G  1000.0G  1500.0G        N/A     117K   5,000K   7,500K        N/A    
+======================

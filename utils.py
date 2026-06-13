@@ -98,6 +98,7 @@ def collect_pairs(reference_dir, generated_dir, generated_suffix):
 
 def prune_conv_layers(model, amount, prune_convtranspose=False, prune_resblocks_only=True):
     """Apply structured output-channel pruning to Conv1d layers and optionally ConvTranspose1d layers.
+    Removes pruning masks immediately (for inference only, not fine-tuning).
 
     Default behavior is conservative: prune only Conv1d layers inside resblocks, and skip
     conv_pre/conv_post. ConvTranspose1d pruning is disabled unless explicitly requested.
@@ -136,6 +137,72 @@ def prune_conv_layers(model, amount, prune_convtranspose=False, prune_resblocks_
         prune.remove(module, 'weight')
         print(f"Done pruning {name} ({module.__class__.__name__})")
 
+    return model
+
+
+def prune_conv_layers_with_mask(model, amount, prune_convtranspose=False, prune_resblocks_only=True):
+    """Apply structured output-channel pruning and KEEP pruning masks for fine-tuning.
+    
+    This version preserves weight_mask for training, allowing gradient masking to keep pruned
+    parameters at zero. Call this before fine-tuning, then use mask-based gradient updates
+    during training.
+    """
+    import torch.nn.utils.prune as prune
+
+    for name, module in model.named_modules():
+        if isinstance(module, torch.nn.Conv1d):
+            if prune_resblocks_only:
+                if not name.startswith('resblocks.'):
+                    continue
+            elif name in ('conv_pre', 'conv_post'):
+                continue
+            prune_dim = 0
+            out_channels = module.out_channels
+        elif isinstance(module, torch.nn.ConvTranspose1d):
+            if not prune_convtranspose:
+                print(f"Skipping ConvTranspose1d pruning for {name}")
+                continue
+            prune_dim = 1
+            out_channels = module.out_channels
+        else:
+            continue
+
+        if out_channels <= 1:
+            print(f"Skipping pruning for {name} ({module.__class__.__name__}) with out_channels={out_channels}")
+            continue
+
+        groups = getattr(module, 'groups', 1)
+        if groups != 1:
+            print(f"Skipping pruning for {name} ({module.__class__.__name__}) with groups={groups}")
+            continue
+
+        print(f"Pruning (with mask) {name} ({module.__class__.__name__}): out_channels={out_channels}, dim={prune_dim}, amount={amount}")
+        prune.ln_structured(module, name='weight', amount=amount, n=2, dim=prune_dim)
+        # DO NOT call prune.remove() - keep the mask for fine-tuning
+        print(f"Done pruning (with mask) {name} ({module.__class__.__name__})")
+
+    return model
+
+
+def remove_prune_masks(model):
+    """Remove all pruning masks from model after fine-tuning.
+    
+    Call this function to convert from 'masked' state to 'permanent sparse' state
+    before final inference or model deployment.
+    """
+    import torch.nn.utils.prune as prune
+    
+    count = 0
+    for module in model.modules():
+        if hasattr(module, 'weight_mask'):
+            prune.remove(module, 'weight')
+            count += 1
+    
+    if count > 0:
+        print(f"Removed pruning masks from {count} modules")
+    else:
+        print("No pruning masks found in model")
+    
     return model
 
 

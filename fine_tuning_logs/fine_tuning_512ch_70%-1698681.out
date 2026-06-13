@@ -1,0 +1,397 @@
+### Starting TaskPrologue of job 1698681 on tg095 at Sat Jun 13 08:07:08 PM CEST 2026
+Running on cores 64-95 with governor ondemand
+Sat Jun 13 20:07:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   33C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+========== Fine-Tuning Model 512 Channels ==========
+Initializing Training Process..
+Batch size per GPU : 16
+Using CUDA GPU: NVIDIA A100-SXM4-40GB
+Generator(
+  (conv_pre): Conv1d(80, 512, kernel_size=(7,), stride=(1,), padding=(3,))
+  (ups): ModuleList(
+    (0): ConvTranspose1d(512, 256, kernel_size=(16,), stride=(8,), padding=(4,))
+    (1): ConvTranspose1d(256, 128, kernel_size=(16,), stride=(8,), padding=(4,))
+    (2): ConvTranspose1d(128, 64, kernel_size=(4,), stride=(2,), padding=(1,))
+    (3): ConvTranspose1d(64, 32, kernel_size=(4,), stride=(2,), padding=(1,))
+  )
+  (resblocks): ModuleList(
+    (0): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (1): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (2): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(256, 256, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (3): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (4): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (5): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(128, 128, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (6): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (7): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (8): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(64, 64, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+    (9): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(1,))
+        (1): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(3,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(5,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(1,))
+      )
+    )
+    (10): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(3,))
+        (1): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(9,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(15,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(7,), stride=(1,), padding=(3,))
+      )
+    )
+    (11): ResBlock1(
+      (convs1): ModuleList(
+        (0): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(5,))
+        (1): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(15,), dilation=(3,))
+        (2): Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(25,), dilation=(5,))
+      )
+      (convs2): ModuleList(
+        (0-2): 3 x Conv1d(32, 32, kernel_size=(11,), stride=(1,), padding=(5,))
+      )
+    )
+  )
+  (conv_post): Conv1d(32, 1, kernel_size=(7,), stride=(1,), padding=(3,))
+)
+checkpoints directory :  /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512_ft70
+history checkpoints directory :  /home/woody/vlbi/vlbi107v/cp_hifigan/v1_c512_ft70
+Loading generator from explicit checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c512/g_07640000
+Skipping optimizer state (will be re-initialized)
+Applying masked pruning (fine-tuning mode) with ratio 0.70...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=256, dim=0, amount=0.7
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.7
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.7
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.7
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Masked pruning applied. Pruned parameters will be kept at zero during training.
+Epoch: 1
+Steps : 0, Gen Loss Total : 99.446, Mel-Spec. Error : 2.059, s/b : 10.667
+Steps : 5, Gen Loss Total : 92.986, Mel-Spec. Error : 1.991, s/b : 0.222
+Steps : 10, Gen Loss Total : 75.578, Mel-Spec. Error : 1.606, s/b : 0.220
+Steps : 15, Gen Loss Total : 84.020, Mel-Spec. Error : 1.761, s/b : 0.221
+Steps : 20, Gen Loss Total : 76.013, Mel-Spec. Error : 1.477, s/b : 0.220
+Steps : 25, Gen Loss Total : 70.398, Mel-Spec. Error : 1.359, s/b : 0.219
+Steps : 30, Gen Loss Total : 76.713, Mel-Spec. Error : 1.560, s/b : 0.217
+Steps : 35, Gen Loss Total : 65.185, Mel-Spec. Error : 1.336, s/b : 0.220
+Steps : 40, Gen Loss Total : 72.364, Mel-Spec. Error : 1.438, s/b : 0.218
+Steps : 45, Gen Loss Total : 74.751, Mel-Spec. Error : 1.495, s/b : 0.218
+Steps : 50, Gen Loss Total : 74.115, Mel-Spec. Error : 1.434, s/b : 0.221
+Steps : 55, Gen Loss Total : 74.004, Mel-Spec. Error : 1.475, s/b : 0.223
+Steps : 60, Gen Loss Total : 58.500, Mel-Spec. Error : 1.146, s/b : 0.220
+Steps : 65, Gen Loss Total : 60.354, Mel-Spec. Error : 1.147, s/b : 0.220
+Steps : 70, Gen Loss Total : 64.717, Mel-Spec. Error : 1.214, s/b : 0.218
+Steps : 75, Gen Loss Total : 72.173, Mel-Spec. Error : 1.347, s/b : 0.220
+Steps : 80, Gen Loss Total : 65.787, Mel-Spec. Error : 1.218, s/b : 0.221
+Steps : 85, Gen Loss Total : 56.826, Mel-Spec. Error : 1.090, s/b : 0.219
+Steps : 90, Gen Loss Total : 63.086, Mel-Spec. Error : 1.175, s/b : 0.217
+Steps : 95, Gen Loss Total : 66.614, Mel-Spec. Error : 1.261, s/b : 0.219
+Steps : 100, Gen Loss Total : 69.353, Mel-Spec. Error : 1.282, s/b : 0.220
+Steps : 105, Gen Loss Total : 57.250, Mel-Spec. Error : 1.001, s/b : 0.221
+Steps : 110, Gen Loss Total : 59.259, Mel-Spec. Error : 1.132, s/b : 0.218
+Steps : 115, Gen Loss Total : 58.041, Mel-Spec. Error : 1.102, s/b : 0.221
+Steps : 120, Gen Loss Total : 60.563, Mel-Spec. Error : 1.046, s/b : 0.222
+Steps : 125, Gen Loss Total : 67.247, Mel-Spec. Error : 1.197, s/b : 0.221
+Steps : 130, Gen Loss Total : 57.429, Mel-Spec. Error : 1.020, s/b : 0.221
+Steps : 135, Gen Loss Total : 62.415, Mel-Spec. Error : 1.129, s/b : 0.220
+Steps : 140, Gen Loss Total : 53.655, Mel-Spec. Error : 0.947, s/b : 0.224
+Steps : 145, Gen Loss Total : 59.211, Mel-Spec. Error : 1.009, s/b : 0.220
+Steps : 150, Gen Loss Total : 62.088, Mel-Spec. Error : 1.115, s/b : 0.220
+Steps : 155, Gen Loss Total : 55.793, Mel-Spec. Error : 0.938, s/b : 0.222
+Steps : 160, Gen Loss Total : 55.142, Mel-Spec. Error : 0.929, s/b : 0.219
+Steps : 165, Gen Loss Total : 55.950, Mel-Spec. Error : 0.964, s/b : 0.218
+Steps : 170, Gen Loss Total : 56.641, Mel-Spec. Error : 0.963, s/b : 0.217
+Steps : 175, Gen Loss Total : 63.817, Mel-Spec. Error : 1.168, s/b : 0.219
+Steps : 180, Gen Loss Total : 57.971, Mel-Spec. Error : 1.013, s/b : 0.220
+Steps : 185, Gen Loss Total : 58.519, Mel-Spec. Error : 1.053, s/b : 0.220
+Steps : 190, Gen Loss Total : 59.641, Mel-Spec. Error : 1.089, s/b : 0.218
+Steps : 195, Gen Loss Total : 68.032, Mel-Spec. Error : 1.254, s/b : 0.221
+Steps : 200, Gen Loss Total : 61.991, Mel-Spec. Error : 1.082, s/b : 0.219
+Steps : 205, Gen Loss Total : 61.620, Mel-Spec. Error : 1.091, s/b : 0.223
+Steps : 210, Gen Loss Total : 52.502, Mel-Spec. Error : 0.915, s/b : 0.219
+Steps : 215, Gen Loss Total : 56.198, Mel-Spec. Error : 0.912, s/b : 0.218
+Steps : 220, Gen Loss Total : 52.173, Mel-Spec. Error : 0.873, s/b : 0.221
+Steps : 225, Gen Loss Total : 53.448, Mel-Spec. Error : 0.902, s/b : 0.219
+Steps : 230, Gen Loss Total : 55.723, Mel-Spec. Error : 0.870, s/b : 0.221
+Steps : 235, Gen Loss Total : 54.439, Mel-Spec. Error : 0.929, s/b : 0.219
+Steps : 240, Gen Loss Total : 57.227, Mel-Spec. Error : 0.959, s/b : 0.219
+Steps : 245, Gen Loss Total : 53.276, Mel-Spec. Error : 0.826, s/b : 0.217
+Steps : 250, Gen Loss Total : 60.765, Mel-Spec. Error : 1.073, s/b : 0.220
+Steps : 255, Gen Loss Total : 58.395, Mel-Spec. Error : 0.988, s/b : 0.223
+Steps : 260, Gen Loss Total : 59.273, Mel-Spec. Error : 0.985, s/b : 0.223
+Steps : 265, Gen Loss Total : 52.674, Mel-Spec. Error : 0.808, s/b : 0.223
+Steps : 270, Gen Loss Total : 54.631, Mel-Spec. Error : 0.925, s/b : 0.220
+Steps : 275, Gen Loss Total : 53.802, Mel-Spec. Error : 0.856, s/b : 0.221
+Steps : 280, Gen Loss Total : 54.872, Mel-Spec. Error : 0.903, s/b : 0.221
+Steps : 285, Gen Loss Total : 54.769, Mel-Spec. Error : 0.998, s/b : 0.223
+Steps : 290, Gen Loss Total : 51.632, Mel-Spec. Error : 0.858, s/b : 0.222
+Steps : 295, Gen Loss Total : 46.939, Mel-Spec. Error : 0.792, s/b : 0.219
+Steps : 300, Gen Loss Total : 57.169, Mel-Spec. Error : 1.034, s/b : 0.218
+Steps : 305, Gen Loss Total : 47.255, Mel-Spec. Error : 0.811, s/b : 0.220
+Steps : 310, Gen Loss Total : 47.133, Mel-Spec. Error : 0.781, s/b : 0.219
+Steps : 315, Gen Loss Total : 52.176, Mel-Spec. Error : 0.875, s/b : 0.221
+Steps : 320, Gen Loss Total : 43.291, Mel-Spec. Error : 0.710, s/b : 0.219
+Steps : 325, Gen Loss Total : 57.343, Mel-Spec. Error : 0.905, s/b : 0.219
+Steps : 330, Gen Loss Total : 52.479, Mel-Spec. Error : 0.927, s/b : 0.221
+Steps : 335, Gen Loss Total : 49.906, Mel-Spec. Error : 0.891, s/b : 0.223
+Steps : 340, Gen Loss Total : 58.207, Mel-Spec. Error : 0.947, s/b : 0.218
+Steps : 345, Gen Loss Total : 50.138, Mel-Spec. Error : 0.882, s/b : 0.220
+Steps : 350, Gen Loss Total : 46.760, Mel-Spec. Error : 0.733, s/b : 0.219
+Steps : 355, Gen Loss Total : 53.656, Mel-Spec. Error : 0.913, s/b : 0.217
+Steps : 360, Gen Loss Total : 53.295, Mel-Spec. Error : 0.965, s/b : 0.218
+Steps : 365, Gen Loss Total : 42.221, Mel-Spec. Error : 0.741, s/b : 0.221
+Steps : 370, Gen Loss Total : 46.081, Mel-Spec. Error : 0.763, s/b : 0.221
+Steps : 375, Gen Loss Total : 43.768, Mel-Spec. Error : 0.705, s/b : 0.219
+Steps : 380, Gen Loss Total : 44.337, Mel-Spec. Error : 0.758, s/b : 0.218
+Steps : 385, Gen Loss Total : 45.559, Mel-Spec. Error : 0.808, s/b : 0.220
+Steps : 390, Gen Loss Total : 45.766, Mel-Spec. Error : 0.760, s/b : 0.219
+Steps : 395, Gen Loss Total : 43.618, Mel-Spec. Error : 0.739, s/b : 0.219
+Steps : 400, Gen Loss Total : 43.547, Mel-Spec. Error : 0.781, s/b : 0.219

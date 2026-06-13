@@ -13,6 +13,7 @@ from utils import (
     count_parameters,
     file_size_in_mb,
     prune_conv_layers,
+    remove_prune_masks,
     quantize_dynamic_model,
     save_checkpoint,
     collect_pairs,
@@ -70,7 +71,13 @@ def inference(a):
     # Remove weight norm before pruning / quantization / inference
     generator.remove_weight_norm()
 
-    if a.prune_ratio > 0:
+    # Check if model has pruning masks (from fine-tuning)
+    has_mask = any(hasattr(module, 'weight_mask') for module in generator.modules())
+    
+    if has_mask:
+        print("Model has pruning masks (from fine-tuning). Removing masks before inference...")
+        remove_prune_masks(generator)
+    elif a.prune_ratio > 0:
         print(f"Applying structured pruning with ratio {a.prune_ratio:.2f}...")
         prune_conv_layers(generator, a.prune_ratio, prune_convtranspose=a.prune_convtranspose)
 
