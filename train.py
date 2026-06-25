@@ -272,8 +272,8 @@ def train(rank, a, h):
                     save_checkpoint(history_do_path, do_state)
 
                     # keep only the latest checkpoint files and file(05540000) in cp_hifigan
-                    keep_g = {filename_g,'g_07640000','g_07960000'}
-                    keep_do = {filename_do,'do_07640000','do_07960000'}
+                    keep_g = {filename_g,'g_00265000','g_07640000','g_07960000'}
+                    keep_do = {filename_do,'do_00265000','do_07640000','do_07960000'}
 
                     for fname in os.listdir(a.checkpoint_path):
                         if fname.startswith('g_') and fname not in keep_g:

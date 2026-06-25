@@ -212,7 +212,7 @@ def quantize_dynamic_model(model, dtype=torch.qint8):
     model = model.to("cpu")
     model.eval()
 
-    q_modules = {torch.nn.Conv1d}
+    q_modules = {torch.nn.Conv1d, torch.nn.ConvTranspose1d}
     quantized_model = torch.quantization.quantize_dynamic(
         model,
         q_modules,
@@ -224,6 +224,7 @@ def quantize_dynamic_model(model, dtype=torch.qint8):
 
 def save_checkpoint(filepath, obj):
     print("Saving checkpoint to {}".format(filepath))
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     torch.save(obj, filepath)
     print("Complete.")
 

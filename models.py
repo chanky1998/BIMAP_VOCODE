@@ -5,6 +5,10 @@ from torch.nn import Conv1d, ConvTranspose1d, AvgPool1d, Conv2d
 from torch.nn.utils import weight_norm, remove_weight_norm, spectral_norm
 from utils import init_weights, get_padding
 
+
+def _has_weight_norm(module):
+    return hasattr(module, 'weight_g') and hasattr(module, 'weight_v')
+
 LRELU_SLOPE = 0.1
 
 
@@ -43,9 +47,11 @@ class ResBlock1(torch.nn.Module):
 
     def remove_weight_norm(self):
         for l in self.convs1:
-            remove_weight_norm(l)
+            if _has_weight_norm(l):
+                remove_weight_norm(l)
         for l in self.convs2:
-            remove_weight_norm(l)
+            if _has_weight_norm(l):
+                remove_weight_norm(l)
 
 
 class ResBlock2(torch.nn.Module):
@@ -69,7 +75,8 @@ class ResBlock2(torch.nn.Module):
 
     def remove_weight_norm(self):
         for l in self.convs:
-            remove_weight_norm(l)
+            if _has_weight_norm(l):
+                remove_weight_norm(l)
 
 
 class Generator(torch.nn.Module):
@@ -118,11 +125,14 @@ class Generator(torch.nn.Module):
     def remove_weight_norm(self):
         print('Removing weight norm...')
         for l in self.ups:
-            remove_weight_norm(l)
+            if _has_weight_norm(l):
+                remove_weight_norm(l)
         for l in self.resblocks:
             l.remove_weight_norm()
-        remove_weight_norm(self.conv_pre)
-        remove_weight_norm(self.conv_post)
+        if _has_weight_norm(self.conv_pre):
+            remove_weight_norm(self.conv_pre)
+        if _has_weight_norm(self.conv_post):
+            remove_weight_norm(self.conv_post)
 
 
 class DiscriminatorP(torch.nn.Module):
