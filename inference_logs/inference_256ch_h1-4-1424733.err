@@ -1,4 +1,0 @@
-/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/nn/utils/weight_norm.py:134: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
-  WeightNorm.apply(module, name, dim)
-/home/woody/vlbi/vlbi107v/miniconda3/envs/hifi-gan/lib/python3.8/site-packages/torch/ao/quantization/observer.py:221: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
-  warnings.warn(
