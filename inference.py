@@ -39,6 +39,34 @@ h = None
 device = None
 
 
+def append_metrics_to_csv(csv_path, metrics, header):
+    existing_rows = []
+    existing_header = None
+    if os.path.exists(csv_path):
+        with open(csv_path, newline='') as cf:
+            reader = csv.DictReader(cf)
+            existing_header = reader.fieldnames
+            existing_rows = list(reader)
+
+    if existing_header:
+        merged_header = list(existing_header)
+        for field in header:
+            if field not in merged_header:
+                merged_header.append(field)
+    else:
+        merged_header = header
+
+    row = {field: metrics.get(field) for field in merged_header}
+    write_mode = 'w' if existing_header != merged_header else 'a'
+    with open(csv_path, write_mode, newline='') as cf:
+        writer = csv.DictWriter(cf, fieldnames=merged_header)
+        if write_mode == 'w':
+            writer.writeheader()
+            for existing_row in existing_rows:
+                writer.writerow(existing_row)
+        writer.writerow(row)
+
+
 def load_checkpoint(filepath, device):
     assert os.path.isfile(filepath)
     print("Loading '{}'".format(filepath))
@@ -365,6 +393,7 @@ def inference(a):
     print(f"Generator parameters: {num_params:,}")
 
     total_inference_time = 0
+    total_generator_time = 0
     total_audio_duration = 0
 
     with torch.no_grad():
@@ -373,12 +402,14 @@ def inference(a):
             wav = wav / MAX_WAV_VALUE
             wav = torch.FloatTensor(wav).to(device)
 
-            start_time = time.time()
-
+            start_time = time.perf_counter()
             x = get_mel(wav.unsqueeze(0)).to(device)
-            y_g_hat = generator(x)
 
-            inference_time = time.time() - start_time
+            generator_start_time = time.perf_counter()
+            y_g_hat = generator(x)
+            generator_time = time.perf_counter() - generator_start_time
+
+            inference_time = time.perf_counter() - start_time
 
             audio = y_g_hat.squeeze()
             audio = audio * MAX_WAV_VALUE
@@ -386,16 +417,24 @@ def inference(a):
 
             audio_duration = len(wav) / h.sampling_rate
             rtf = inference_time / audio_duration
+            generator_rtf = generator_time / audio_duration
 
             total_inference_time += inference_time
+            total_generator_time += generator_time
             total_audio_duration += audio_duration
 
             output_file = os.path.join(a.output_dir, os.path.splitext(filname)[0] + '_generated.wav')
             write(output_file, h.sampling_rate, audio)
-            print(f"{output_file} | RTF: {rtf:.4f}({inference_time:.3f}s / {audio_duration:.3f}s)")
-        
+            print(
+                f"{output_file} | RTF: {rtf:.4f}({inference_time:.3f}s / {audio_duration:.3f}s) | "
+                f"Generator RTF: {generator_rtf:.4f}({generator_time:.3f}s / {audio_duration:.3f}s)")
+
         avg_rtf = total_inference_time / total_audio_duration
+        avg_generator_rtf = total_generator_time / total_audio_duration
         print(f"Average RTF: {avg_rtf:.4f}({total_inference_time:.3f}s / {total_audio_duration:.3f}s)")
+        print(
+            f"Average Generator RTF: {avg_generator_rtf:.4f}"
+            f"({total_generator_time:.3f}s / {total_audio_duration:.3f}s)")
     
     # Evaluate generated files against references using functions from utils.py
     pairs = collect_pairs(a.input_wavs_dir, a.output_dir, a.generated_suffix if hasattr(a, 'generated_suffix') else '_generated')
@@ -437,6 +476,7 @@ def inference(a):
         'num_params': num_params,
         'model_size_mb': round(display_size, 3),
         'avg_rtf': round(avg_rtf, 4),
+        'avg_generator_rtf': round(avg_generator_rtf, 4),
         'pesq': mean_pesq,
         'stoi': mean_stoi,
         'mel_l1': mean_mel_l1,
@@ -445,21 +485,10 @@ def inference(a):
     # Write to CSV if requested
     if hasattr(a, 'csv_file') and a.csv_file:
         csv_path = a.csv_file
-        header = ['experiment_name','num_params','model_size_mb','avg_rtf','pesq','stoi','mel_l1']
-        write_header = not os.path.exists(csv_path)
-        with open(csv_path, 'a', newline='') as cf:
-            writer = csv.DictWriter(cf, fieldnames=header)
-            if write_header:
-                writer.writeheader()
-            writer.writerow({
-                'experiment_name': metrics['experiment_name'],
-                'num_params': metrics['num_params'],
-                'model_size_mb': metrics['model_size_mb'],
-                'avg_rtf': metrics['avg_rtf'],
-                'pesq': metrics['pesq'],
-                'stoi': metrics['stoi'],
-                'mel_l1': metrics['mel_l1'],
-            })
+        header = [
+            'experiment_name', 'num_params', 'model_size_mb', 'avg_rtf',
+            'avg_generator_rtf', 'pesq', 'stoi', 'mel_l1']
+        append_metrics_to_csv(csv_path, metrics, header)
         print(f"\nAppended metrics to CSV: {csv_path}")
 
     return metrics
@@ -474,7 +503,7 @@ def main():
     parser.add_argument('--checkpoint_file', required=True)
     parser.add_argument('--config_file', required=True)
     parser.add_argument('--quantize', action='store_true', help='Apply INT8 quantization to the generator')
-    parser.add_argument('--quantize_scope', default='all',
+    parser.add_argument('--quantize_scope', default='resblocks_range',
                         choices=['all', 'no_output', 'no_upsample', 'resblocks', 'resblocks_range'],
                         help=("Quantization scope:\n"
                                 " all             : Quantize all layers.\n"

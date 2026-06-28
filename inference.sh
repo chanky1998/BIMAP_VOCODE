@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=inference_512ch_h1-4
+#SBATCH --job-name=inference_128ch_h1-4
 #SBATCH --clusters=tinyfat
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -21,21 +21,21 @@ conda activate hifi-gan
 cd $HOME/hifi-gan
 export CUDA_VISIBLE_DEVICES=""
 
-EXP_NAME="512 Channels (g_07960000)"
-CONFIG_FILE="cp_hifigan/v1_c512/config.json"
-CHECKPOINT_FILE="$HOME/hifi-gan/cp_hifigan/v1_c512/g_07960000"
-CHECKPOINT_QUANTIZED="$HOME/hifi-gan/cp_hifigan/v1_c512"
+EXP_NAME="128 Channels (g_07960000)"
+CONFIG_FILE="cp_hifigan/v1_c128/config.json"
+CHECKPOINT_FILE="$HOME/hifi-gan/cp_hifigan/v1_c128/g_07960000"
+CHECKPOINT_QUANTIZED="$HOME/hifi-gan/cp_hifigan/v1_c128"
 QUANTIZED_SCOPE="resblocks_range"
 QUANTIZE_RESBLOCK_START="3"
 QUANTIZE_RESBLOCK_END="8"
 CALIBRATION_SAMPLES="50"
-CHECKPOINT_P30="$HOME/hifi-gan/cp_hifigan/v1_c512_ft30"
-CHECKPOINT_P50="$HOME/hifi-gan/cp_hifigan/v1_c512_ft50"
-CHECKPOINT_P70="$HOME/hifi-gan/cp_hifigan/v1_c512_ft70"
+CHECKPOINT_P30="$HOME/hifi-gan/cp_hifigan/v1_c128_ft30"
+CHECKPOINT_P50="$HOME/hifi-gan/cp_hifigan/v1_c128_ft50"
+CHECKPOINT_P70="$HOME/hifi-gan/cp_hifigan/v1_c128_ft70"
 CHECKPOINT_P_FILE="g_00265000"
 PRUNE_WAY="Mask_pruning"
 CSV="experiments_results.csv"
-CHANNEL="512C"
+CHANNEL="128C"
 
 
 echo "==========(sbatch.tinyfat) Inference: ${EXP_NAME} =========="

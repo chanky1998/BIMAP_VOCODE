@@ -19,7 +19,12 @@ envs/
 
 # Checkpoints, models and large binaries
 cp_hifigan/*
-!cp_hifigan/.gitkeep
+
+!cp_hifigan/v1_c512/
+cp_hifigan/v1_c512/*
+
+!cp_hifigan/v1_c512/config.json
+!cp_hifigan/v1_c512/g_07960000
 
 *.pt
 *.pth
@@ -29,11 +34,13 @@ generated_audios/*
 !generated_audios/.gitkeep
 
 LibriSpeech_wav/*
-!LibriSpeech_wav/.gitkeep
+!LibriSpeech_wav/demo/
+!LibriSpeech_wav/demo/**
 
 # Logs produced by training/inference
-#inference_logs/
-#train_logs/
+inference_logs/
+train_logs/
+fine_tuning_logs/
 
 # Experiment result CSVs (optional)
 # experiments_results.csv

@@ -37,6 +37,110 @@ def checkpoint_is_masked(state_dict):
     return any(k.endswith('.weight_orig') or k.endswith('.weight_mask') for k in state_dict.keys())
 
 
+def checkpoint_uses_weight_norm(state_dict):
+    return any(k.endswith('.weight_g') or k.endswith('.weight_v') for k in state_dict.keys())
+
+
+def physical_pruning_enabled(h):
+    return float(getattr(h, 'physical_prune_ratio', 0.0) or 0.0) > 0.0
+
+
+def _checkpoint_weight(state_dict, prefix):
+    weight = state_dict.get(prefix + '.weight')
+    if weight is not None:
+        return weight
+    weight_orig = state_dict.get(prefix + '.weight_orig')
+    if weight_orig is not None:
+        mask = state_dict.get(prefix + '.weight_mask')
+        return weight_orig if mask is None else weight_orig * mask
+    return None
+
+
+def _copy_tensor(dst, src, name):
+    if src is None:
+        return False
+    if tuple(dst.shape) != tuple(src.shape):
+        raise RuntimeError(f'Shape mismatch for {name}: model {tuple(dst.shape)} vs checkpoint {tuple(src.shape)}')
+    dst.copy_(src)
+    return True
+
+
+def _select_physical_channels(state_dict, prefix, weight, target_channels):
+    mask = state_dict.get(prefix + '.weight_mask')
+    scores = weight.pow(2).sum(dim=(1, 2))
+    if mask is not None:
+        keep = mask.reshape(mask.shape[0], -1).sum(dim=1) > 0
+        keep_idx = torch.nonzero(keep, as_tuple=False).flatten()
+        if keep_idx.numel() == target_channels:
+            return keep_idx
+        if keep_idx.numel() > target_channels:
+            local_scores = scores.index_select(0, keep_idx)
+            selected = torch.topk(local_scores, k=target_channels).indices
+            return keep_idx.index_select(0, selected).sort().values
+    return torch.topk(scores, k=target_channels).indices.sort().values
+
+
+def load_masked_checkpoint_into_physical_generator(generator, state_dict):
+    """Initialize a physical-pruned ResBlock1 Generator from a masked checkpoint."""
+    generator.remove_weight_norm()
+    own_state = generator.state_dict()
+    copied = 0
+
+    with torch.no_grad():
+        for name, dst in own_state.items():
+            if name.startswith('resblocks.') and ('.convs1.' in name or '.convs2.' in name):
+                continue
+            if name.endswith('.weight'):
+                src = _checkpoint_weight(state_dict, name[:-7])
+            else:
+                src = state_dict.get(name)
+            if src is not None and tuple(dst.shape) == tuple(src.shape):
+                dst.copy_(src)
+                copied += 1
+
+        for block_idx, block in enumerate(generator.resblocks):
+            if not (hasattr(block, 'convs1') and hasattr(block, 'convs2')):
+                continue
+            for conv_idx, (c1, c2) in enumerate(zip(block.convs1, block.convs2)):
+                c1_prefix = f'resblocks.{block_idx}.convs1.{conv_idx}'
+                c2_prefix = f'resblocks.{block_idx}.convs2.{conv_idx}'
+                c1_weight = _checkpoint_weight(state_dict, c1_prefix)
+                c2_weight = _checkpoint_weight(state_dict, c2_prefix)
+                if c1_weight is None or c2_weight is None:
+                    raise RuntimeError(f'Missing masked checkpoint weights for {c1_prefix}/{c2_prefix}')
+
+                keep_idx = _select_physical_channels(state_dict, c1_prefix, c1_weight, c1.weight.shape[0])
+                c1.weight.copy_(c1_weight.index_select(0, keep_idx))
+                if c1.bias is not None:
+                    c1_bias = state_dict.get(c1_prefix + '.bias')
+                    _copy_tensor(c1.bias, None if c1_bias is None else c1_bias.index_select(0, keep_idx), c1_prefix + '.bias')
+
+                c2.weight.copy_(c2_weight.index_select(1, keep_idx))
+                if c2.bias is not None:
+                    _copy_tensor(c2.bias, state_dict.get(c2_prefix + '.bias'), c2_prefix + '.bias')
+                copied += 4
+
+    print(f'Initialized physical-pruned generator from masked checkpoint ({copied} tensors copied).')
+
+
+def load_generator_checkpoint(generator, state_dict, h, a, rank):
+    checkpoint_pruned = checkpoint_is_masked(state_dict)
+    if checkpoint_pruned and physical_pruning_enabled(h):
+        if rank == 0:
+            print('Loaded masked checkpoint as initialization for physical-pruned generator.')
+        load_masked_checkpoint_into_physical_generator(generator, state_dict)
+    elif checkpoint_pruned:
+        if rank == 0:
+            print('Loaded masked pruned generator checkpoint.')
+        generator.remove_weight_norm()
+        prune_conv_layers_with_mask(generator, max(a.prune_ratio, 0.0), prune_convtranspose=a.prune_convtranspose)
+        generator.load_state_dict(state_dict)
+    else:
+        if not checkpoint_uses_weight_norm(state_dict):
+            generator.remove_weight_norm()
+        generator.load_state_dict(state_dict)
+    return checkpoint_pruned
+
 def train(rank, a, h):
     if h.num_gpus > 1:
         init_process_group(backend=h.dist_config['dist_backend'], init_method=h.dist_config['dist_url'],
@@ -85,38 +189,36 @@ def train(rank, a, h):
 
     steps = 0
     checkpoint_pruned = False
+    initialized_physical_from_mask = False
     if cp_g is None or cp_do is None:
         state_dict_do = None
         last_epoch = -1
         if cp_g is not None:
             state_dict_g = load_checkpoint(cp_g, device)
-            checkpoint_pruned = checkpoint_is_masked(state_dict_g['generator'])
-            if checkpoint_pruned:
-                if rank == 0:
-                    print("Loaded masked pruned generator checkpoint.")
-                generator.remove_weight_norm()
-                prune_conv_layers_with_mask(generator, max(a.prune_ratio, 0.0), prune_convtranspose=a.prune_convtranspose)
-                generator.load_state_dict(state_dict_g['generator'])
-            else:
-                generator.load_state_dict(state_dict_g['generator'])
+            checkpoint_pruned = load_generator_checkpoint(generator, state_dict_g['generator'], h, a, rank)
+            initialized_physical_from_mask = checkpoint_pruned and physical_pruning_enabled(h)
     else:
         state_dict_g = load_checkpoint(cp_g, device)
         state_dict_do = load_checkpoint(cp_do, device)
-        checkpoint_pruned = checkpoint_is_masked(state_dict_g['generator'])
-        if checkpoint_pruned:
+        checkpoint_pruned = load_generator_checkpoint(generator, state_dict_g['generator'], h, a, rank)
+        initialized_physical_from_mask = checkpoint_pruned and physical_pruning_enabled(h)
+        if initialized_physical_from_mask:
             if rank == 0:
-                print("Loaded masked pruned generator checkpoint.")
-            generator.remove_weight_norm()
-            prune_conv_layers_with_mask(generator, max(a.prune_ratio, 0.0), prune_convtranspose=a.prune_convtranspose)
-            generator.load_state_dict(state_dict_g['generator'])
+                print('Starting a new physical-pruned training run; discriminator and optimizer states are not loaded.')
+            state_dict_do = None
+            steps = 0
+            last_epoch = -1
         else:
-            generator.load_state_dict(state_dict_g['generator'])
-        mpd.load_state_dict(state_dict_do['mpd'])
-        msd.load_state_dict(state_dict_do['msd'])
-        steps = state_dict_do['steps'] + 1
-        last_epoch = state_dict_do['epoch']
+            mpd.load_state_dict(state_dict_do['mpd'])
+            msd.load_state_dict(state_dict_do['msd'])
+            steps = state_dict_do['steps'] + 1
+            last_epoch = state_dict_do['epoch']
 
-    # Apply pruning with mask for fine-tuning if prune_ratio is specified and checkpoint was not already pruned
+    # Apply pruning with mask for fine-tuning if prune_ratio is specified and checkpoint was not already pruned.
+    # physical_prune_ratio changes the architecture itself, so do not add mask pruning on top by accident.
+    if a.prune_ratio > 0 and physical_pruning_enabled(h):
+        raise ValueError('Use either --prune_ratio for mask pruning or physical_prune_ratio in config for physical pruning, not both.')
+
     if a.prune_ratio > 0 and not checkpoint_pruned:
         if rank == 0:
             print(f"Applying masked pruning (fine-tuning mode) with ratio {a.prune_ratio:.2f}...")

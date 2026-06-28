@@ -41,8 +41,8 @@ This repository provides a complete experimental pipeline for evaluating compres
 We study the effects of:
 
 - Model scaling (channel width)
-- INT8 quantization
-- Structured pruning
+- INT8 quantization (different layers)
+- Structured pruning (30%,50%,70%; need to be fine-tuned)
 - Combined pruning + quantization
 
 The goal is to analyze the trade-off between:
@@ -100,6 +100,49 @@ Each experiment logs the following metrics into a CSV file:
 
 ## Quick Start
 
+### Set up
+1. Python 3.8;
+2. Clone this repository;
+3. For the quick demo, use the sample audio files provided in `LibriSpeech_wav/demo`. For full experiments, download the [**LibriSpeech**](https://www.openslr.org/12/) dataset and run `prepare_librispeech.py` for pre-processing.
+4. Install python requirements.
+```bash
+conda create -n hifi-gan python=3.8
+conda activate hifi-gan
+pip install -r requirements.txt
+```
+
+### Demo: training and inference
+
+The demo uses a small set of WAV files from `LibriSpeech_wav/demo` and the pretrained 512-channel checkpoint in `cp_hifigan/v1_c512/g_07960000`.
+
+Run a short fine-tuning demo:
+
+```bash
+cd hifi-gan
+conda activate hifi-gan
+bash train_demo.sh
+```
+
+Then run inference and evaluation:
+
+```bash
+bash inference_demo.sh
+```
+
+The demo writes generated audio to:
+
+```text
+generated_audios/demo_pretrained
+generated_audios/demo_finetuned
+```
+
+The evaluation results are appended to:
+
+```text
+demo_results.csv
+```
+
+
 ### Single Experiment (Recommended)
 
 Run inference and evaluation using `inference.py`:
@@ -110,47 +153,56 @@ Examples (512 Channels):
 # H1: baseline (no compression)
 python inference.py \
     --output_dir generated_audios/generated_H1_512C \
-    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_07960000 \
     --config_file config_v1_512.json \
     --experiment_name H1_512C_baseline \
     --csv_file experiments_results.csv
 
-# H2: quantized (INT8 dynamic quantization)
+# H2: quantized (INT8 dynamic quantization; resblocks range:3-8)
 python inference.py \
     --output_dir generated_audios/generated_H2_512C_int8 \
-    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
+    --checkpoint_file cp_hifigan/v1_c512/g_07960000 \
     --config_file config_v1_512.json \
-    --experiment_name H2_512C_quantized \
+    --experiment_name H2_512C_quantized_resblocks_range_3_8 \
     --csv_file experiments_results.csv \
-    --quantize
+    --quantize \
+    --quantize_scope resblocks_range \
+    --calibration_samples 50 \
+    --quantize_resblock_start 3 \
+    --quantize_resblock_end 8 \
+    --save_compressed_checkpoint \
+    --compressed_checkpoint_file cp_hifigan/v1_c128/compressed_checkpoint_int8
 
-# H3: pruning 30%
+# H3: pruning 30% (checkpoint file after fine-tuning)
 python inference.py \
     --output_dir generated_audios/generated_H3_512C_pruned30 \
-    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
+    --checkpoint_file cp_hifigan/v1_c128_ft30/g_00265000 \
     --config_file config_v1_512.json \
     --experiment_name H3_512C_pruned30 \
     --csv_file experiments_results.csv \
     --prune_ratio 0.3 \
     --save_compressed_checkpoint \
-    --compressed_checkpoint_file cp_hifigan/v1_c512/v1_c512_pruned30
+    --compressed_checkpoint_file cp_hifigan/v1_c128_ft30/compressed_checkpoint
 
 # H4: pruning 30% + quantize
 python inference.py \
     --output_dir generated_audios/generated_H4_512C_pruned30_int8 \
-    --checkpoint_file cp_hifigan/v1_c512/g_05540000 \
+    --checkpoint_file cp_hifigan/v1_c128_ft30/g_00265000 \
     --config_file config_v1_512.json \
-    --experiment_name H4_512C_pruned30_int8 \
+    --experiment_name H4_512C_pruned30_int8_resblocks_range_3_8 \
     --csv_file experiments_results.csv \
-    --prune_ratio 0.3 \
     --quantize \
+    --quantize_scope resblocks_range \
+    --calibration_samples 50 \
+    --quantize_resblock_start 3 \
+    --quantize_resblock_end 8 \
     --save_compressed_checkpoint \
-    --compressed_checkpoint_file cp_hifigan/v1_c512/v1_c512_pruned30_int8
+    --compressed_checkpoint_file cp_hifigan/v1_c128_ft30/compressed_checkpoint_int8
 ```
 
 ### Batch experiments
 
-You can use `run_all_experiments.sh` to run the standard H1–H4 sweep. That script now calls
+You can use `inference.sh` to run the standard H1–H4. That script now calls
 `inference.py` directly and appends all results to `experiments_results.csv`.
 
 ## CSV format
@@ -158,7 +210,7 @@ You can use `run_all_experiments.sh` to run the standard H1–H4 sweep. That scr
 The CSV columns are:
 
 ```
-experiment_name,num_params,model_size_mb,avg_rtf,pesq,stoi,mel_l1
+experiment_name,num_params,model_size_mb,avg_rtf,avg_generator_rtf,pesq,stoi,mel_l1
 ```
 
 Each row is one experiment result appended by `inference.py`.
@@ -171,22 +223,23 @@ Each row is one experiment result appended by `inference.py`.
 import pandas as pd
 
 df = pd.read_csv('experiments_results.csv')
+df['experiment_group'] = df['experiment_name'].str.extract(r'(H\d)')
 
 print('=== H1 scaling results ===')
-print(df[df['experiment_name'].str.contains('H1')][['experiment_name','num_params','model_size_mb','avg_rtf','pesq','stoi']])
+print(df[df['experiment_name'].str.contains('H1')][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
 
 print('\n=== H2 quantization ===')
-print(df[df['experiment_name'].str.contains('H2')][['experiment_name','model_size_mb','avg_rtf','pesq']])
+print(df[df['experiment_name'].str.contains('H2')][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
 
 print('\n=== H3 pruning by ratio ===')
 for ratio in [0.3, 0.5, 0.7]:
         mask = (df['experiment_name'].str.contains('H3')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
-        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','pesq']])
+        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
 
 print('\n=== H4 pruning + quantization ===')
 for ratio in [0.3, 0.5, 0.7]:
         mask = (df['experiment_name'].str.contains('H4')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
-        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','pesq']])
+        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
 ```
 
 ### Bash
@@ -218,8 +271,8 @@ grep -c 'H2_' experiments_results.csv
 | `--config_file` | model config JSON |
 | `--experiment_name` | label stored in CSV |
 | `--csv_file` | CSV path to append metrics |
-| `--prune_ratio` | structured pruning ratio (0.0-1.0) |
 | `--quantize` | enable INT8 dynamic quantization |
+| `--quantize_scope`| Controls which parts of the model are quantized ｜
 | `--save_compressed_checkpoint` | save pruned/quantized checkpoint |
 | `--compressed_checkpoint_file` | path to save compressed checkpoint |
 
@@ -245,8 +298,13 @@ grep -c 'H2_' experiments_results.csv
 ## References
 
 [1] J. Kong, J. Kim, and J. Bae, "HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis," Advances in Neural Information Processing Systems (NeurIPS), vol. 33, pp. 17022–17033, 2020.
+
 [2] A. Mehrish, N. Majumder, R. Bharadwaj, R. Mihalcea, and S. Poria, "A Review of Deep Learning Techniques for Speech Processing," Information Fusion, vol. 99, p. 101869, 2023.
+
 [3] A. Wong, M. Famouri, M. Pavlova, and S. Surana, "TinySpeech: Attention Condensers for Deep Speech Recognition Neural Networks on Edge Devices," arXiv preprint arXiv:2008.04245, 2020.
+
 [4] Z. Mu, X. Yang, and Y. Dong, "Review of End-to-End Speech Synthesis Technology Based on Deep Learning," arXiv preprint arXiv:2104.09995, 2021.
+
 [5] C. Feng et al., "Edge-ASR: Towards Low-Bit Quantization of Automatic Speech Recognition Models," arXiv preprint arXiv:2507.07877, 2025.
+
 [6] H. Jiang et al., "Accurate and Structured Pruning for Efficient Automatic Speech Recognition," arXiv preprint arXiv:2305.19549, 2023.

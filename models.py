@@ -12,26 +12,42 @@ def _has_weight_norm(module):
 LRELU_SLOPE = 0.1
 
 
+def _get_attr(h, name, default=None):
+    if isinstance(h, dict):
+        return h.get(name, default)
+    return getattr(h, name, default)
+
+
+def _physical_hidden_channels(h, channels):
+    ratio = float(_get_attr(h, 'physical_prune_ratio', 0.0) or 0.0)
+    if ratio <= 0:
+        return channels
+    if ratio >= 1:
+        raise ValueError('physical_prune_ratio must be < 1.0')
+    return max(1, int(round(channels * (1.0 - ratio))))
+
+
 class ResBlock1(torch.nn.Module):
     def __init__(self, h, channels, kernel_size=3, dilation=(1, 3, 5)):
         super(ResBlock1, self).__init__()
         self.h = h
+        hidden_channels = _physical_hidden_channels(h, channels)
         self.convs1 = nn.ModuleList([
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[0],
+            weight_norm(Conv1d(channels, hidden_channels, kernel_size, 1, dilation=dilation[0],
                                padding=get_padding(kernel_size, dilation[0]))),
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[1],
+            weight_norm(Conv1d(channels, hidden_channels, kernel_size, 1, dilation=dilation[1],
                                padding=get_padding(kernel_size, dilation[1]))),
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[2],
+            weight_norm(Conv1d(channels, hidden_channels, kernel_size, 1, dilation=dilation[2],
                                padding=get_padding(kernel_size, dilation[2])))
         ])
         self.convs1.apply(init_weights)
 
         self.convs2 = nn.ModuleList([
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=1,
+            weight_norm(Conv1d(hidden_channels, channels, kernel_size, 1, dilation=1,
                                padding=get_padding(kernel_size, 1))),
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=1,
+            weight_norm(Conv1d(hidden_channels, channels, kernel_size, 1, dilation=1,
                                padding=get_padding(kernel_size, 1))),
-            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=1,
+            weight_norm(Conv1d(hidden_channels, channels, kernel_size, 1, dilation=1,
                                padding=get_padding(kernel_size, 1)))
         ])
         self.convs2.apply(init_weights)

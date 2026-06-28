@@ -1,0 +1,151 @@
+### Starting TaskPrologue of job 1424733 on tf077 at Sun Jun 28 04:42:17 PM CEST 2026
+Running on cores 48-55,112-119 with governor ondemand
+No GPU known
+### Finished TaskPrologue
+
+==========(sbatch.tinyfat) Inference: 256 Channels (g_07960000) ==========
+========== H2: quantized (INT8 dynamic quantization) ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/g_07960000'
+Complete.
+Checkpoint contains weight_norm parameters. Keeping weight_norm wrappers for loading...
+Removing weight norm...
+Calibrating static quantization using 20 samples...
+INT8 quantization scope: all
+Checking quantized modules after static quantization:
+Quantized module: conv_pre (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: ups.0 (torch.ao.nn.quantized.modules.conv.ConvTranspose1d)
+Quantized module: ups.1 (torch.ao.nn.quantized.modules.conv.ConvTranspose1d)
+Quantized module: ups.2 (torch.ao.nn.quantized.modules.conv.ConvTranspose1d)
+Quantized module: ups.3 (torch.ao.nn.quantized.modules.conv.ConvTranspose1d)
+Quantized module: resblocks.0.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.0.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.0.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.0.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.0.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.0.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.1.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.2.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.9.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.10.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.11.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: conv_post (torch.ao.nn.quantized.modules.conv.Conv1d)
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/compressed_checkpoint_int8
+Complete.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/compressed_checkpoint_int8 (3.688 MB)
+Compressed checkpoint parameters: 3,556,057
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/g_07960000 (13.660 MB)
+Generator parameters: 3,556,057
+generated_audios/generated_H2_256C_int8/61-70968-0000_generated.wav | RTF: 0.0532(0.261s / 4.905s) | Generator RTF: 0.0525(0.257s / 4.905s)
+generated_audios/generated_H2_256C_int8/61-70968-0001_generated.wav | RTF: 0.0531(0.192s / 3.610s) | Generator RTF: 0.0521(0.188s / 3.610s)
+generated_audios/generated_H2_256C_int8/61-70968-0002_generated.wav | RTF: 0.0543(0.161s / 2.970s) | Generator RTF: 0.0532(0.158s / 2.970s)
+generated_audios/generated_H2_256C_int8/61-70968-0003_generated.wav | RTF: 0.0526(0.227s / 4.315s) | Generator RTF: 0.0518(0.224s / 4.315s)
+generated_audios/generated_H2_256C_int8/61-70968-0004_generated.wav | RTF: 0.0525(0.204s / 3.885s) | Generator RTF: 0.0516(0.201s / 3.885s)
+generated_audios/generated_H2_256C_int8/61-70968-0005_generated.wav | RTF: 0.0524(0.266s / 5.070s) | Generator RTF: 0.0516(0.262s / 5.070s)
+generated_audios/generated_H2_256C_int8/61-70968-0006_generated.wav | RTF: 0.0538(0.158s / 2.935s) | Generator RTF: 0.0527(0.155s / 2.935s)
+generated_audios/generated_H2_256C_int8/61-70968-0007_generated.wav | RTF: 0.0535(0.190s / 3.550s) | Generator RTF: 0.0526(0.187s / 3.550s)
+generated_audios/generated_H2_256C_int8/61-70968-0008_generated.wav | RTF: 0.0548(0.194s / 3.535s) | Generator RTF: 0.0539(0.190s / 3.535s)
+generated_audios/generated_H2_256C_int8/61-70968-0009_generated.wav | RTF: 0.0536(0.242s / 4.510s) | Generator RTF: 0.0528(0.238s / 4.510s)
+generated_audios/generated_H2_256C_int8/61-70968-0010_generated.wav | RTF: 0.0515(0.427s / 8.295s) | Generator RTF: 0.0510(0.423s / 8.295s)
+generated_audios/generated_H2_256C_int8/61-70968-0011_generated.wav | RTF: 0.0522(0.333s / 6.375s) | Generator RTF: 0.0515(0.329s / 6.375s)
+generated_audios/generated_H2_256C_int8/61-70968-0012_generated.wav | RTF: 0.0584(0.152s / 2.610s) | Generator RTF: 0.0573(0.150s / 2.610s)
+generated_audios/generated_H2_256C_int8/61-70968-0013_generated.wav | RTF: 0.0530(0.236s / 4.450s) | Generator RTF: 0.0522(0.232s / 4.450s)
+generated_audios/generated_H2_256C_int8/61-70968-0014_generated.wav | RTF: 0.0524(0.392s / 7.485s) | Generator RTF: 0.0520(0.389s / 7.485s)
+generated_audios/generated_H2_256C_int8/61-70968-0015_generated.wav | RTF: 0.0522(0.281s / 5.375s) | Generator RTF: 0.0515(0.277s / 5.375s)
+generated_audios/generated_H2_256C_int8/61-70968-0016_generated.wav | RTF: 0.0584(0.217s / 3.720s) | Generator RTF: 0.0574(0.214s / 3.720s)
+generated_audios/generated_H2_256C_int8/61-70968-0017_generated.wav | RTF: 0.0522(0.267s / 5.110s) | Generator RTF: 0.0514(0.263s / 5.110s)
+generated_audios/generated_H2_256C_int8/61-70968-0018_generated.wav | RTF: 0.0555(0.134s / 2.405s) | Generator RTF: 0.0541(0.130s / 2.405s)
+generated_audios/generated_H2_256C_int8/61-70968-0019_generated.wav | RTF: 0.0520(0.284s / 5.475s) | Generator RTF: 0.0513(0.281s / 5.475s)
+Average RTF: 0.0532(4.816s / 90.585s)
+Average Generator RTF: 0.0524(4.746s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 1.414197
+  PESQ: 1.105735
+  STOI: 0.804333
+
+Appended metrics to CSV: experiments_results.csv
+Appended to experiments_results.csv:
+H2_256C_quantized_all,3556057,3.688,0.0532,0.0524,1.1057345807552337,0.8043329245896744,1.414197415113449
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Sun Jun 28 04:43:12 PM CEST 2026
+= Job-ID             : 1424733 on tinyfat
+= Job-Name           : inference_256ch_h1-4
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference_Test.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:00:56
+= Total RAM usage    : 1.0 GiB of requested  GiB (%)   
+= Node list          : tf077
+= Subm/Elig/Start/End: 2026-06-28T16:42:16 / 2026-06-28T16:42:16 / 2026-06-28T16:42:16 / 2026-06-28T16:43:12
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              74.8G   104.9G   209.7G        N/A      80K     500K   1,000K        N/A    
+    /home/woody           490.5G  1000.0G  1500.0G        N/A     118K   5,000K   7,500K        N/A    
+======================
