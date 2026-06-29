@@ -50,7 +50,7 @@ python train.py \
     --history_checkpoint_path "cp_hifigan/v1_c512/checkpoint_history" \
     --tensorboard_logs_path "cp_hifigan/v1_c512/tensorboard" \
     --init_checkpoint "$PRETRAINED_MODEL" \
-    --training_epochs 10 \
+    --training_epochs 5 \
     --checkpoint_interval 10 \
     --summary_interval 5 \
     --validation_interval 10 \

@@ -118,7 +118,6 @@ The demo uses a small set of WAV files from `LibriSpeech_wav/demo` and the pretr
 Run a short fine-tuning demo:
 
 ```bash
-cd hifi-gan
 conda activate hifi-gan
 bash train_demo.sh
 ```
@@ -134,6 +133,7 @@ The demo writes generated audio to:
 ```text
 generated_audios/demo_pretrained
 generated_audios/demo_finetuned
+generated_audios/demo_quantized
 ```
 
 The evaluation results are appended to:

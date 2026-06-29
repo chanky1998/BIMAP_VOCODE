@@ -42,7 +42,9 @@ python inference.py \
     --quantize_scope resblocks_range \
     --calibration_samples 5 \
     --quantize_resblock_start 3 \
-    --quantize_resblock_end 8
+    --quantize_resblock_end 8 \
+    --save_compressed_checkpoint \
+    --compressed_checkpoint_file cp_hifigan/v1_c512/checkpoints/compressed_checkpoint_int8
 
 echo "Done. Results are in demo_results.csv"
-echo "Generated wavs are in generated_audios/demo_pretrained and generated_audios/demo_finetuned"
+echo "Generated wavs are in generated_audios/demo_pretrained, generated_audios/demo_finetuned and generated_audios/demo_quantized"
