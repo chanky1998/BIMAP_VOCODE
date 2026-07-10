@@ -1,0 +1,73 @@
+### Starting TaskPrologue of job 1428627 on tf077 at Sat Jul  4 09:31:42 PM CEST 2026
+Running on cores 8,10-16,72,74-80 with governor ondemand
+No GPU known
+### Finished TaskPrologue
+
+==========(sbatch.tinyfat) Inference: 256 Channels (g_07960000) ==========
+========== H3: pruning 30% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical30/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+========== H3: pruning 50% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical50/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+========== H3: pruning 70% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical70/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+========== H4: pruning 30% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical30/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+========== H4: pruning 50% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical50/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+========== H4: pruning 70% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_physical70/g_00265000'
+Complete.
+Checkpoint contains plain conv weights. Removing weight_norm wrappers before loading...
+Removing weight norm...
+Appended to experiments_results.csv:
+H4_128C_pruned70_int8_Mask_pruning_resblocks_range_3_8,926129,3.2,0.0259,0.0251,1.3991772651672363,0.8521062540982236,0.5486382007598877
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Sat Jul  4 09:33:02 PM CEST 2026
+= Job-ID             : 1428627 on tinyfat
+= Job-Name           : inference_256ch_h1-4
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference_Test.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:01:22
+= Total RAM usage    : 0.4 GiB of requested  GiB (%)   
+= Node list          : tf077
+= Subm/Elig/Start/End: 2026-07-04T21:31:39 / 2026-07-04T21:31:39 / 2026-07-04T21:31:40 / 2026-07-04T21:33:02
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              93.5G   104.9G   209.7G        N/A      79K     500K   1,000K        N/A    
+    /home/woody           244.2G  1000.0G  1500.0G        N/A     118K   5,000K   7,500K        N/A    
+======================

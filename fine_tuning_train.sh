@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=fine_tuning_128ch_70%
+#SBATCH --job-name=fine_tuning_512ch_30%
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -20,14 +20,16 @@ conda activate hifi-gan
 
 cd $HOME/hifi-gan
 
-echo "========== Fine-Tuning Model 128 Channels =========="
-srun python train.py --config config_v1_128.json \
-    --checkpoint_path $HOME/hifi-gan/cp_hifigan/v1_c128_ft70 \
-    --history_checkpoint_path $WORK/cp_hifigan/v1_c128_ft70 \
-    --tensorboard_logs_path $WORK/logs/v1_c128_ft70 \
-    --prune_ratio 0.7 \
+CHANNEL="512"
+PRUNNING="30"
+
+echo "========== Fine-Tuning Model ${CHANNEL} Channels =========="
+srun python train.py --config config_v1_${CHANNEL}_p${PRUNNING}.json \
+    --checkpoint_path $HOME/hifi-gan/cp_hifigan/v1_c${CHANNEL}_physical${PRUNNING} \
+    --history_checkpoint_path $WORK/cp_hifigan/v1_c${CHANNEL}_physical${PRUNNING} \
+    --tensorboard_logs_path $WORK/logs/v1_c${CHANNEL}_physical${PRUNNING} \
     --training_epochs 150 \
     --checkpoint_interval 5000 \
     --summary_interval 500 \
     --validation_interval 1000 \
-    --init_checkpoint $HOME/hifi-gan/cp_hifigan/v1_c128/g_07960000
+#    --init_checkpoint $HOME/hifi-gan/cp_hifigan/v1_c${CHANNEL}_ft${PRUNNING}/g_00265000

@@ -38,9 +38,9 @@ LibriSpeech_wav/*
 !LibriSpeech_wav/demo/**
 
 # Logs produced by training/inference
-inference_logs/
-train_logs/
-fine_tuning_logs/
+# inference_logs/
+# train_logs/
+# fine_tuning_logs/
 
 # Experiment result CSVs (optional)
 # experiments_results.csv

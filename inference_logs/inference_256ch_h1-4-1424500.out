@@ -1,0 +1,1554 @@
+### Starting TaskPrologue of job 1424500 on tf079 at Thu Jun 25 10:14:20 PM CEST 2026
+Running on cores 12-15,50-53,76-79,114-117 with governor ondemand
+No GPU known
+### Finished TaskPrologue
+
+==========(sbatch.tinyfat) Inference: 256 Channels (g_07960000) ==========
+========== H1: baseline (no compression) ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/g_07960000'
+Complete.
+Checkpoint contains weight_norm parameters. Keeping weight_norm wrappers for loading...
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256/g_07960000 (13.660 MB)
+Generator parameters: 3,560,706
+generated_audios/generated_H1_256C/61-70968-0000_generated.wav | RTF: 0.3955(1.940s / 4.905s)
+generated_audios/generated_H1_256C/61-70968-0001_generated.wav | RTF: 0.7309(2.639s / 3.610s)
+generated_audios/generated_H1_256C/61-70968-0002_generated.wav | RTF: 0.2847(0.846s / 2.970s)
+generated_audios/generated_H1_256C/61-70968-0003_generated.wav | RTF: 0.2894(1.249s / 4.315s)
+generated_audios/generated_H1_256C/61-70968-0004_generated.wav | RTF: 0.2827(1.098s / 3.885s)
+generated_audios/generated_H1_256C/61-70968-0005_generated.wav | RTF: 0.2826(1.433s / 5.070s)
+generated_audios/generated_H1_256C/61-70968-0006_generated.wav | RTF: 0.2793(0.820s / 2.935s)
+generated_audios/generated_H1_256C/61-70968-0007_generated.wav | RTF: 0.2843(1.009s / 3.550s)
+generated_audios/generated_H1_256C/61-70968-0008_generated.wav | RTF: 0.2859(1.011s / 3.535s)
+generated_audios/generated_H1_256C/61-70968-0009_generated.wav | RTF: 0.2878(1.298s / 4.510s)
+generated_audios/generated_H1_256C/61-70968-0010_generated.wav | RTF: 0.2847(2.362s / 8.295s)
+generated_audios/generated_H1_256C/61-70968-0011_generated.wav | RTF: 0.2803(1.787s / 6.375s)
+generated_audios/generated_H1_256C/61-70968-0012_generated.wav | RTF: 0.2874(0.750s / 2.610s)
+generated_audios/generated_H1_256C/61-70968-0013_generated.wav | RTF: 0.2873(1.278s / 4.450s)
+generated_audios/generated_H1_256C/61-70968-0014_generated.wav | RTF: 0.2900(2.170s / 7.485s)
+generated_audios/generated_H1_256C/61-70968-0015_generated.wav | RTF: 0.2858(1.536s / 5.375s)
+generated_audios/generated_H1_256C/61-70968-0016_generated.wav | RTF: 0.2906(1.081s / 3.720s)
+generated_audios/generated_H1_256C/61-70968-0017_generated.wav | RTF: 0.2917(1.490s / 5.110s)
+generated_audios/generated_H1_256C/61-70968-0018_generated.wav | RTF: 0.2860(0.688s / 2.405s)
+generated_audios/generated_H1_256C/61-70968-0019_generated.wav | RTF: 0.2879(1.576s / 5.475s)
+Average RTF: 0.3098(28.062s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 0.251747
+  PESQ: 2.555924
+  STOI: 0.947582
+
+Appended metrics to CSV: experiments_results.csv
+========== H3: pruning 30% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 11
+Structural mask compaction: 36 conv pairs, removed 817,128 / 2,746,080 pair parameters
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/compressed_checkpoint
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/compressed_checkpoint (10.498 MB)
+Compressed checkpoint parameters: 2,738,521
+Clean mask-free checkpoint saved: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/compressed_checkpoint (10.498 MB)
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/g_00265000 (24.098 MB)
+Generator parameters: 2,738,521
+generated_audios/generated_H3_256C_pruned30/61-70968-0000_generated.wav | RTF: 0.2955(1.450s / 4.905s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0001_generated.wav | RTF: 0.2779(1.003s / 3.610s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0002_generated.wav | RTF: 0.2762(0.820s / 2.970s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0003_generated.wav | RTF: 0.2786(1.202s / 4.315s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0004_generated.wav | RTF: 0.2818(1.095s / 3.885s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0005_generated.wav | RTF: 0.2752(1.395s / 5.070s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0006_generated.wav | RTF: 0.2799(0.822s / 2.935s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0007_generated.wav | RTF: 0.2837(1.007s / 3.550s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0008_generated.wav | RTF: 0.2808(0.993s / 3.535s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0009_generated.wav | RTF: 0.2764(1.246s / 4.510s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0010_generated.wav | RTF: 0.2782(2.307s / 8.295s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0011_generated.wav | RTF: 0.2731(1.741s / 6.375s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0012_generated.wav | RTF: 0.2851(0.744s / 2.610s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0013_generated.wav | RTF: 0.2806(1.248s / 4.450s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0014_generated.wav | RTF: 0.2809(2.103s / 7.485s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0015_generated.wav | RTF: 0.2766(1.487s / 5.375s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0016_generated.wav | RTF: 0.2866(1.066s / 3.720s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0017_generated.wav | RTF: 0.2819(1.440s / 5.110s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0018_generated.wav | RTF: 0.2821(0.678s / 2.405s)
+generated_audios/generated_H3_256C_pruned30/61-70968-0019_generated.wav | RTF: 0.2769(1.516s / 5.475s)
+Average RTF: 0.2800(25.364s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 5.705295
+  PESQ: 1.048662
+  STOI: 0.654870
+
+Appended metrics to CSV: experiments_results.csv
+========== H3: pruning 50% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 8
+Structural mask compaction: 36 conv pairs, removed 1,371,960 / 2,746,080 pair parameters
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/compressed_checkpoint
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/compressed_checkpoint (8.382 MB)
+Compressed checkpoint parameters: 2,183,689
+Clean mask-free checkpoint saved: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/compressed_checkpoint (8.382 MB)
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/g_00265000 (24.098 MB)
+Generator parameters: 2,183,689
+generated_audios/generated_H3_256C_pruned50/61-70968-0000_generated.wav | RTF: 0.7123(3.494s / 4.905s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0001_generated.wav | RTF: 0.4747(1.714s / 3.610s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0002_generated.wav | RTF: 0.7681(2.281s / 2.970s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0003_generated.wav | RTF: 0.3445(1.487s / 4.315s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0004_generated.wav | RTF: 0.2586(1.005s / 3.885s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0005_generated.wav | RTF: 0.2569(1.303s / 5.070s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0006_generated.wav | RTF: 0.2521(0.740s / 2.935s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0007_generated.wav | RTF: 0.2612(0.927s / 3.550s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0008_generated.wav | RTF: 0.2589(0.915s / 3.535s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0009_generated.wav | RTF: 0.2559(1.154s / 4.510s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0010_generated.wav | RTF: 0.2571(2.132s / 8.295s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0011_generated.wav | RTF: 0.2597(1.655s / 6.375s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0012_generated.wav | RTF: 0.2614(0.682s / 2.610s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0013_generated.wav | RTF: 0.2609(1.161s / 4.450s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0014_generated.wav | RTF: 0.2622(1.963s / 7.485s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0015_generated.wav | RTF: 0.2565(1.379s / 5.375s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0016_generated.wav | RTF: 0.2608(0.970s / 3.720s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0017_generated.wav | RTF: 0.2629(1.343s / 5.110s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0018_generated.wav | RTF: 0.2661(0.640s / 2.405s)
+generated_audios/generated_H3_256C_pruned50/61-70968-0019_generated.wav | RTF: 0.2541(1.391s / 5.475s)
+Average RTF: 0.3128(28.337s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 5.062935
+  PESQ: 1.026401
+  STOI: 0.457668
+
+Appended metrics to CSV: experiments_results.csv
+========== H3: pruning 70% ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 5
+Structural mask compaction: 36 conv pairs, removed 1,926,792 / 2,746,080 pair parameters
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/compressed_checkpoint
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/compressed_checkpoint (6.265 MB)
+Compressed checkpoint parameters: 1,628,857
+Clean mask-free checkpoint saved: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/compressed_checkpoint (6.265 MB)
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/g_00265000 (24.098 MB)
+Generator parameters: 1,628,857
+generated_audios/generated_H3_256C_pruned70/61-70968-0000_generated.wav | RTF: 0.9068(4.448s / 4.905s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0001_generated.wav | RTF: 1.1631(4.199s / 3.610s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0002_generated.wav | RTF: 1.3687(4.065s / 2.970s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0003_generated.wav | RTF: 1.0860(4.686s / 4.315s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0004_generated.wav | RTF: 1.0242(3.979s / 3.885s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0005_generated.wav | RTF: 0.9207(4.668s / 5.070s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0006_generated.wav | RTF: 1.3860(4.068s / 2.935s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0007_generated.wav | RTF: 0.8558(3.038s / 3.550s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0008_generated.wav | RTF: 0.7378(2.608s / 3.535s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0009_generated.wav | RTF: 0.5942(2.680s / 4.510s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0010_generated.wav | RTF: 0.4332(3.593s / 8.295s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0011_generated.wav | RTF: 0.5035(3.210s / 6.375s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0012_generated.wav | RTF: 0.8847(2.309s / 2.610s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0013_generated.wav | RTF: 0.5980(2.661s / 4.450s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0014_generated.wav | RTF: 0.4582(3.430s / 7.485s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0015_generated.wav | RTF: 0.2978(1.601s / 5.375s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0016_generated.wav | RTF: 0.2591(0.964s / 3.720s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0017_generated.wav | RTF: 0.2593(1.325s / 5.110s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0018_generated.wav | RTF: 0.2583(0.621s / 2.405s)
+generated_audios/generated_H3_256C_pruned70/61-70968-0019_generated.wav | RTF: 0.2533(1.387s / 5.475s)
+Average RTF: 0.6573(59.540s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 5.244585
+  PESQ: 1.069437
+  STOI: 0.554132
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 30% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 90
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 90
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 45
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 45
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 22
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 22
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 11
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 11
+Structural mask compaction: 36 conv pairs, removed 817,128 / 2,746,080 pair parameters
+Removing weight norm...
+Calibrating static quantization using 20 samples...
+INT8 quantization scope: resblocks_range
+Quantizing residual blocks 3..8; all other layers stay FP32.
+Checking quantized modules after static quantization:
+Quantized module: resblocks.3.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/compressed_checkpoint_int8
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/compressed_checkpoint_int8 (9.292 MB)
+Compressed checkpoint parameters: 2,738,665
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft30/g_00265000 (24.098 MB)
+Generator parameters: 2,738,665
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0000_generated.wav | RTF: 0.5115(2.509s / 4.905s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0001_generated.wav | RTF: 0.4587(1.656s / 3.610s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0002_generated.wav | RTF: 0.1245(0.370s / 2.970s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0003_generated.wav | RTF: 0.0625(0.270s / 4.315s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0004_generated.wav | RTF: 0.0634(0.246s / 3.885s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0005_generated.wav | RTF: 0.0608(0.308s / 5.070s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0006_generated.wav | RTF: 0.0651(0.191s / 2.935s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0007_generated.wav | RTF: 0.0606(0.215s / 3.550s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0008_generated.wav | RTF: 0.0609(0.215s / 3.535s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0009_generated.wav | RTF: 0.0604(0.273s / 4.510s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0010_generated.wav | RTF: 0.0811(0.673s / 8.295s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0011_generated.wav | RTF: 0.3172(2.022s / 6.375s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0012_generated.wav | RTF: 0.6642(1.734s / 2.610s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0013_generated.wav | RTF: 0.0597(0.266s / 4.450s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0014_generated.wav | RTF: 0.0634(0.474s / 7.485s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0015_generated.wav | RTF: 0.0592(0.318s / 5.375s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0016_generated.wav | RTF: 0.0619(0.230s / 3.720s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0017_generated.wav | RTF: 0.0589(0.301s / 5.110s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0018_generated.wav | RTF: 0.0641(0.154s / 2.405s)
+generated_audios/generated_H4_256C_pruned30_int8/61-70968-0019_generated.wav | RTF: 0.0590(0.323s / 5.475s)
+Average RTF: 0.1407(12.748s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 4.992641
+  PESQ: 1.041345
+  STOI: 0.598290
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 50% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 64
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 64
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 32
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 32
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 16
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 16
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 8
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 8
+Structural mask compaction: 36 conv pairs, removed 1,371,960 / 2,746,080 pair parameters
+Removing weight norm...
+Calibrating static quantization using 20 samples...
+INT8 quantization scope: resblocks_range
+Quantizing residual blocks 3..8; all other layers stay FP32.
+Checking quantized modules after static quantization:
+Quantized module: resblocks.3.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/compressed_checkpoint_int8
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/compressed_checkpoint_int8 (7.543 MB)
+Compressed checkpoint parameters: 2,183,833
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft50/g_00265000 (24.098 MB)
+Generator parameters: 2,183,833
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0000_generated.wav | RTF: 0.0529(0.260s / 4.905s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0001_generated.wav | RTF: 0.0496(0.179s / 3.610s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0002_generated.wav | RTF: 0.0493(0.146s / 2.970s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0003_generated.wav | RTF: 0.0490(0.211s / 4.315s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0004_generated.wav | RTF: 0.0492(0.191s / 3.885s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0005_generated.wav | RTF: 0.2922(1.481s / 5.070s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0006_generated.wav | RTF: 0.6671(1.958s / 2.935s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0007_generated.wav | RTF: 0.5620(1.995s / 3.550s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0008_generated.wav | RTF: 0.5451(1.927s / 3.535s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0009_generated.wav | RTF: 0.5002(2.256s / 4.510s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0010_generated.wav | RTF: 0.3133(2.599s / 8.295s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0011_generated.wav | RTF: 0.3864(2.463s / 6.375s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0012_generated.wav | RTF: 0.8065(2.105s / 2.610s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0013_generated.wav | RTF: 0.4717(2.099s / 4.450s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0014_generated.wav | RTF: 0.2513(1.881s / 7.485s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0015_generated.wav | RTF: 0.0505(0.271s / 5.375s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0016_generated.wav | RTF: 0.0524(0.195s / 3.720s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0017_generated.wav | RTF: 0.0504(0.257s / 5.110s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0018_generated.wav | RTF: 0.0526(0.127s / 2.405s)
+generated_audios/generated_H4_256C_pruned50_int8/61-70968-0019_generated.wav | RTF: 0.0505(0.276s / 5.475s)
+Average RTF: 0.2526(22.878s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 4.989480
+  PESQ: 1.040686
+  STOI: 0.440863
+
+Appended metrics to CSV: experiments_results.csv
+========== H4: pruning 70% + quantize ==========
+Initializing Inference Process..
+Using device: cpu (baseline and quantized inference both run on CPU)
+Quantization enabled: forcing CPU inference for INT8 model.
+Loading '/home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/g_00265000'
+Complete.
+Checkpoint contains masked pruning parameters. Preparing masked model before loading...
+Removing weight norm...
+Skipping ConvTranspose1d pruning for ups.0
+Skipping ConvTranspose1d pruning for ups.1
+Skipping ConvTranspose1d pruning for ups.2
+Skipping ConvTranspose1d pruning for ups.3
+Pruning (with mask) resblocks.0.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.0.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.0.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.1.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.1.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs1.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.0 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.1 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.2.convs2.2 (Conv1d): out_channels=128, dim=0, amount=0.0
+Done pruning (with mask) resblocks.2.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.3.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.3.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.4.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.4.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs1.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.0 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.1 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.5.convs2.2 (Conv1d): out_channels=64, dim=0, amount=0.0
+Done pruning (with mask) resblocks.5.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.6.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.6.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.7.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.7.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs1.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.0 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.1 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.8.convs2.2 (Conv1d): out_channels=32, dim=0, amount=0.0
+Done pruning (with mask) resblocks.8.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.9.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.9.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.10.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.10.convs2.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs1.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs1.2 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.0 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.0 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.1 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.1 (Conv1d)
+Pruning (with mask) resblocks.11.convs2.2 (Conv1d): out_channels=16, dim=0, amount=0.0
+Done pruning (with mask) resblocks.11.convs2.2 (Conv1d)
+Physically compacting masked residual channels before inference...
+Compacted resblocks.0.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.0.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.0.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.1.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 0: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 1: hidden channels 128 -> 38
+Compacted resblocks.2.convs pair 2: hidden channels 128 -> 38
+Compacted resblocks.3.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.3.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.3.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.4.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 0: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 1: hidden channels 64 -> 19
+Compacted resblocks.5.convs pair 2: hidden channels 64 -> 19
+Compacted resblocks.6.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.6.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.6.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.7.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 0: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 1: hidden channels 32 -> 10
+Compacted resblocks.8.convs pair 2: hidden channels 32 -> 10
+Compacted resblocks.9.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.9.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.9.convs pair 2: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.10.convs pair 2: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 0: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 1: hidden channels 16 -> 5
+Compacted resblocks.11.convs pair 2: hidden channels 16 -> 5
+Structural mask compaction: 36 conv pairs, removed 1,926,792 / 2,746,080 pair parameters
+Removing weight norm...
+Calibrating static quantization using 20 samples...
+INT8 quantization scope: resblocks_range
+Quantizing residual blocks 3..8; all other layers stay FP32.
+Checking quantized modules after static quantization:
+Quantized module: resblocks.3.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.3.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.4.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.5.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.6.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.7.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs1.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.0 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.1 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Quantized module: resblocks.8.convs2.2 (torch.ao.nn.quantized.modules.conv.Conv1d)
+Saving checkpoint to /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/compressed_checkpoint_int8
+Complete.
+Note: structurally compacted checkpoints cannot be reloaded by the standard Generator without a matching structural config.
+Saved compressed checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/compressed_checkpoint_int8 (5.792 MB)
+Compressed checkpoint parameters: 1,629,001
+Loaded checkpoint: /home/hpc/vlbi/vlbi107v/hifi-gan/cp_hifigan/v1_c256_ft70/g_00265000 (24.098 MB)
+Generator parameters: 1,629,001
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0000_generated.wav | RTF: 0.0412(0.202s / 4.905s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0001_generated.wav | RTF: 0.0422(0.152s / 3.610s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0002_generated.wav | RTF: 0.0450(0.134s / 2.970s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0003_generated.wav | RTF: 0.0402(0.173s / 4.315s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0004_generated.wav | RTF: 0.0429(0.166s / 3.885s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0005_generated.wav | RTF: 0.0408(0.207s / 5.070s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0006_generated.wav | RTF: 0.0451(0.133s / 2.935s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0007_generated.wav | RTF: 0.0437(0.155s / 3.550s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0008_generated.wav | RTF: 0.0443(0.156s / 3.535s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0009_generated.wav | RTF: 0.0448(0.202s / 4.510s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0010_generated.wav | RTF: 0.0452(0.375s / 8.295s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0011_generated.wav | RTF: 0.0417(0.266s / 6.375s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0012_generated.wav | RTF: 0.0488(0.127s / 2.610s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0013_generated.wav | RTF: 0.0418(0.186s / 4.450s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0014_generated.wav | RTF: 0.0424(0.318s / 7.485s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0015_generated.wav | RTF: 0.0411(0.221s / 5.375s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0016_generated.wav | RTF: 0.0453(0.169s / 3.720s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0017_generated.wav | RTF: 0.0416(0.212s / 5.110s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0018_generated.wav | RTF: 0.0461(0.111s / 2.405s)
+generated_audios/generated_H4_256C_pruned70_int8/61-70968-0019_generated.wav | RTF: 0.0415(0.227s / 5.475s)
+Average RTF: 0.0430(3.893s / 90.585s)
+Evaluation summary:
+  Mel-spectrogram L1: 4.954233
+  PESQ: 1.050101
+  STOI: 0.529012
+
+Appended metrics to CSV: experiments_results.csv
+Appended to experiments_results.csv:
+H4_256C_pruned70_int8_Physical_pruning_resblocks_range_3_8,1629001,5.792,0.043,1.0501009464263915,0.5290123027424003,4.954233264923095
+========== Done ==========
+=== JOB_STATISTICS ===
+=== current date     : Thu Jun 25 10:22:33 PM CEST 2026
+= Job-ID             : 1424500 on tinyfat
+= Job-Name           : inference_256ch_h1-4
+= Job-Command        : /home/hpc/vlbi/vlbi107v/hifi-gan/inference_Test.sh
+= Initial workdir    : /home/hpc/vlbi/vlbi107v/hifi-gan
+= Queue/Partition    : work
+= Slurm account      : vlbi with QOS=normal
+= Requested resources:  for 02:00:00
+= Elapsed runtime    : 00:08:14
+= Total RAM usage    : 1.3 GiB of requested  GiB (%)   
+= Node list          : tf079
+= Subm/Elig/Start/End: 2026-06-25T22:14:17 / 2026-06-25T22:14:17 / 2026-06-25T22:14:19 / 2026-06-25T22:22:33
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              71.4G   104.9G   209.7G        N/A      78K     500K   1,000K        N/A    
+    /home/woody           381.5G  1000.0G  1500.0G        N/A     117K   5,000K   7,500K        N/A    
+======================

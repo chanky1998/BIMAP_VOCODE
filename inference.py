@@ -39,6 +39,16 @@ h = None
 device = None
 
 
+
+def append_per_audio_metrics_to_csv(csv_path, rows, header):
+    os.makedirs(os.path.dirname(csv_path) or '.', exist_ok=True)
+    file_exists = os.path.exists(csv_path) and os.path.getsize(csv_path) > 0
+    with open(csv_path, 'a', newline='') as cf:
+        writer = csv.DictWriter(cf, fieldnames=header)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(rows)
+
 def append_metrics_to_csv(csv_path, metrics, header):
     existing_rows = []
     existing_header = None
@@ -395,6 +405,7 @@ def inference(a):
     total_inference_time = 0
     total_generator_time = 0
     total_audio_duration = 0
+    per_audio_metrics = {}
 
     with torch.no_grad():
         for i, filname in enumerate(filelist):
@@ -423,7 +434,16 @@ def inference(a):
             total_generator_time += generator_time
             total_audio_duration += audio_duration
 
-            output_file = os.path.join(a.output_dir, os.path.splitext(filname)[0] + '_generated.wav')
+            output_file = os.path.join(a.output_dir, os.path.splitext(filname)[0] + a.generated_suffix + '.wav')
+            per_audio_metrics[os.path.abspath(output_file)] = {
+                'audio_file': filname,
+                'generated_file': output_file,
+                'audio_duration': audio_duration,
+                'inference_time': inference_time,
+                'generator_time': generator_time,
+                'avg_rtf': rtf,
+                'avg_generator_rtf': generator_rtf,
+            }
             write(output_file, h.sampling_rate, audio)
             print(
                 f"{output_file} | RTF: {rtf:.4f}({inference_time:.3f}s / {audio_duration:.3f}s) | "
@@ -457,8 +477,16 @@ def inference(a):
         gen_16k = resample_audio(gen_audio, h.sampling_rate, 16000)
         ref_16k, gen_16k = align_waveforms(ref_16k, gen_16k)
 
-        pesq_scores.append(pesq_fn(16000, ref_16k, gen_16k, "wb"))
-        stoi_scores.append(stoi_fn(ref_16k, gen_16k, 16000, extended=False))
+        pesq = pesq_fn(16000, ref_16k, gen_16k, "wb")
+        stoi = stoi_fn(ref_16k, gen_16k, 16000, extended=False)
+        pesq_scores.append(pesq)
+        stoi_scores.append(stoi)
+
+        row = per_audio_metrics.get(os.path.abspath(str(gen_path)))
+        if row is not None:
+            row['pesq'] = pesq
+            row['stoi'] = stoi
+            row['mel_l1'] = mel_l1
 
     mean_mel_l1 = float(np.mean(mel_l1_scores)) if mel_l1_scores else None
     mean_pesq = float(np.mean(pesq_scores)) if pesq_scores else None
@@ -481,6 +509,27 @@ def inference(a):
         'stoi': mean_stoi,
         'mel_l1': mean_mel_l1,
     }
+
+    per_audio_rows = []
+    experiment_name = metrics['experiment_name']
+    for row in per_audio_metrics.values():
+        row = dict(row)
+        row.setdefault('pesq', None)
+        row.setdefault('stoi', None)
+        row.setdefault('mel_l1', None)
+        row['experiment_name'] = experiment_name
+        for key in ('audio_duration', 'inference_time', 'generator_time', 'avg_rtf', 'avg_generator_rtf', 'pesq', 'stoi', 'mel_l1'):
+            if row[key] is not None:
+                row[key] = round(float(row[key]), 6)
+        per_audio_rows.append(row)
+
+    if hasattr(a, 'per_audio_csv_file') and a.per_audio_csv_file:
+        per_audio_header = [
+            'experiment_name', 'audio_file', 'generated_file',
+            'audio_duration', 'inference_time', 'generator_time',
+            'avg_rtf', 'avg_generator_rtf', 'pesq', 'stoi', 'mel_l1']
+        append_per_audio_metrics_to_csv(a.per_audio_csv_file, per_audio_rows, per_audio_header)
+        print(f"Appended per-audio metrics to CSV: {a.per_audio_csv_file}")
 
     # Write to CSV if requested
     if hasattr(a, 'csv_file') and a.csv_file:
@@ -532,7 +581,9 @@ def main():
     parser.add_argument('--experiment_name', default=None,
                         help='Experiment name to record in CSV')
     parser.add_argument('--csv_file', default=None,
-                        help='Optional CSV file to append metrics to')
+                        help='Optional CSV file to append experiment-level metrics to')
+    parser.add_argument('--per_audio_csv_file', default=None,
+                        help='Optional CSV file to save per-audio metrics for boxplots and p-value tests')
     parser.add_argument('--generated_suffix', default='_generated',
                         help='Suffix used for generated files (default: _generated)')
     a = parser.parse_args()
