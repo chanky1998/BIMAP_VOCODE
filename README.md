@@ -70,7 +70,7 @@ We use a **3 × 4 factorial setup**:
 
 |         Method        |    Description    |
 |-----------------------|-------------------|
-|        Baseline       |   No compression  |
+|        Baseline       |   Model channel scaling  |
 |      Quantization     | INT8 dynamic quantization |
 |        Pruning        | Structured channel pruning |
 | Pruning + Quantization | Combined compression |
@@ -153,7 +153,7 @@ Run inference and evaluation using `inference.py`:
 Examples (512 Channels):
 
 ```bash
-# H1: baseline (no compression)
+# H1: baseline (Model channel scaling)
 python inference.py \
     --output_dir generated_audios/generated_H1_512C \
     --checkpoint_file cp_hifigan/v1_c512/g_07960000 \
