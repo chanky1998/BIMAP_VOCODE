@@ -1,0 +1,34 @@
+\begin{table}
+\caption{Absolute and relative improvements for channel scaling, quantization, and pruning.}
+\label{tab:compression_summary}
+\begin{tabular}{llllrrrrrrrrr}
+\toprule
+comparison & experiment\_name & reference & channel & pruning\_pct & size\_reduction\_MB & size\_reduction\_\% & generator\_RTF\_reduction & generator\_RTF\_reduction\_\% & PESQ\_change & PESQ\_change\_\% & STOI\_change & STOI\_change\_\% \\
+\midrule
+Channel scaling (vs H1 512C) & H1\_512C\_baseline & H1\_512C\_baseline & 512C &  & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 \\
+Channel scaling (vs H1 512C) & H1\_256C\_baseline & H1\_512C\_baseline & 256C &  & 39.579000 & 74.300000 & 0.050400 & 16.300000 & -0.229000 & -7.500000 & -0.010100 & -1.050000 \\
+Channel scaling (vs H1 512C) & H1\_128C\_baseline & H1\_512C\_baseline & 128C &  & 49.622000 & 93.200000 & 0.063500 & 20.600000 & -0.622000 & -20.400000 & -0.028200 & -2.930000 \\
+H2 quantization 3-8 (vs same-channel H1) & H2\_512C\_quantized\_resblocks\_range\_3\_8 & H1\_512C\_baseline & 512C &  & 7.329000 & 13.800000 & 0.059400 & 19.300000 & -0.082000 & -2.700000 & -0.003500 & -0.360000 \\
+H2 quantization 3-8 (vs same-channel H1) & H2\_256C\_quantized\_resblocks\_range\_3\_8 & H1\_256C\_baseline & 256C &  & 1.799000 & 13.200000 & 0.047100 & 18.300000 & -0.148000 & -5.300000 & -0.006300 & -0.670000 \\
+H2 quantization 3-8 (vs same-channel H1) & H2\_128C\_quantized\_resblocks\_range\_3\_8 & H1\_128C\_baseline & 128C &  & 0.417000 & 11.500000 & 0.038000 & 15.500000 & -0.574000 & -23.700000 & -0.029200 & -3.130000 \\
+H3 physical pruning (vs same-channel H1) & H3\_512C\_pruned30\_Physical\_pruning & H1\_512C\_baseline & 512C & 30.000000 & 12.620000 & 23.700000 & 0.048900 & 15.900000 & -0.588000 & -19.300000 & -0.025300 & -2.640000 \\
+H3 physical pruning (vs same-channel H1) & H3\_512C\_pruned50\_Physical\_pruning & H1\_512C\_baseline & 512C & 50.000000 & 20.989000 & 39.400000 & 0.077500 & 25.100000 & -0.503000 & -16.500000 & -0.018000 & -1.870000 \\
+H3 physical pruning (vs same-channel H1) & H3\_512C\_pruned70\_Physical\_pruning & H1\_512C\_baseline & 512C & 70.000000 & 29.361000 & 55.100000 & 0.099900 & 32.400000 & -0.575000 & -18.900000 & -0.024800 & -2.580000 \\
+H3 physical pruning (vs same-channel H1) & H3\_256C\_pruned30\_Physical\_pruning & H1\_256C\_baseline & 256C & 30.000000 & 3.163000 & 23.200000 & 0.015800 & 6.100000 & -0.455000 & -16.200000 & -0.021100 & -2.210000 \\
+H3 physical pruning (vs same-channel H1) & H3\_256C\_pruned50\_Physical\_pruning & H1\_256C\_baseline & 256C & 50.000000 & 5.278000 & 38.600000 & 0.028100 & 10.900000 & -0.543000 & -19.300000 & -0.023100 & -2.420000 \\
+H3 physical pruning (vs same-channel H1) & H3\_256C\_pruned70\_Physical\_pruning & H1\_256C\_baseline & 256C & 70.000000 & 7.395000 & 54.100000 & 0.036500 & 14.100000 & -0.727000 & -25.800000 & -0.032800 & -3.450000 \\
+H3 physical pruning (vs same-channel H1) & H3\_128C\_pruned30\_Physical\_pruning & H1\_128C\_baseline & 128C & 30.000000 & 0.820000 & 22.700000 & 0.006500 & 2.700000 & -0.458000 & -18.900000 & -0.021500 & -2.300000 \\
+H3 physical pruning (vs same-channel H1) & H3\_128C\_pruned50\_Physical\_pruning & H1\_128C\_baseline & 128C & 50.000000 & 1.343000 & 37.100000 & 0.010300 & 4.200000 & -0.510000 & -21.100000 & -0.033000 & -3.530000 \\
+H3 physical pruning (vs same-channel H1) & H3\_128C\_pruned70\_Physical\_pruning & H1\_128C\_baseline & 128C & 70.000000 & 1.867000 & 51.600000 & 0.014000 & 5.700000 & -0.580000 & -23.900000 & -0.035800 & -3.830000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_512C\_pruned30\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_512C\_baseline & 512C & 30.000000 & 17.702000 & 33.300000 & 0.089900 & 29.200000 & -0.647000 & -21.200000 & -0.027400 & -2.850000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_512C\_pruned50\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_512C\_baseline & 512C & 50.000000 & 24.577000 & 46.200000 & 0.113700 & 36.900000 & -0.610000 & -20.000000 & -0.022800 & -2.370000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_512C\_pruned70\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_512C\_baseline & 512C & 70.000000 & 31.454000 & 59.100000 & 0.129900 & 42.100000 & -0.601000 & -19.800000 & -0.026400 & -2.740000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_256C\_pruned30\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_256C\_baseline & 256C & 30.000000 & 4.367000 & 32.000000 & 0.053100 & 20.600000 & -0.640000 & -22.700000 & -0.029600 & -3.110000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_256C\_pruned50\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_256C\_baseline & 256C & 50.000000 & 6.117000 & 44.800000 & 0.061700 & 23.900000 & -0.686000 & -24.400000 & -0.030200 & -3.170000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_256C\_pruned70\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_256C\_baseline & 256C & 70.000000 & 7.868000 & 57.600000 & 0.068700 & 26.600000 & -0.801000 & -28.400000 & -0.037500 & -3.940000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_128C\_pruned30\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_128C\_baseline & 128C & 30.000000 & 1.061000 & 29.300000 & 0.040700 & 16.600000 & -0.570000 & -23.500000 & -0.028000 & -3.000000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_128C\_pruned50\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_128C\_baseline & 128C & 50.000000 & 1.499000 & 41.400000 & 0.041000 & 16.700000 & -0.721000 & -29.800000 & -0.047600 & -5.100000 \\
+H4 pruning + quantization (vs same-channel H1) & H4\_128C\_pruned70\_int8\_Physical\_pruning\_resblocks\_range\_3\_8 & H1\_128C\_baseline & 128C & 70.000000 & 1.939000 & 53.600000 & 0.042600 & 17.400000 & -0.814000 & -33.600000 & -0.051400 & -5.500000 \\
+\bottomrule
+\end{tabular}
+\end{table}

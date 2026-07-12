@@ -115,7 +115,7 @@ pip install -r requirements.txt
 
 The demo uses a small set of WAV files from `LibriSpeech_wav/demo` and the pretrained 512-channel checkpoint in `cp_hifigan/v1_c512/g_07960000`.
 
-Run a short fine-tuning demo:
+Run a short train demo:
 
 ```bash
 conda activate hifi-gan
@@ -173,7 +173,7 @@ python inference.py \
     --save_compressed_checkpoint \
     --compressed_checkpoint_file cp_hifigan/v1_c128/compressed_checkpoint_int8
 
-# H3: pruning 30% (checkpoint file after fine-tuning)
+# H3: pruning 30% (Mask pruning; checkpoint file after fine-tuning)
 python inference.py \
     --output_dir generated_audios/generated_H3_512C_pruned30 \
     --checkpoint_file cp_hifigan/v1_c128_ft30/g_00265000 \
@@ -184,11 +184,22 @@ python inference.py \
     --save_compressed_checkpoint \
     --compressed_checkpoint_file cp_hifigan/v1_c128_ft30/compressed_checkpoint
 
+# H3: pruning 30% (Physical pruning; checkpoint file after fine-tuning)
+echo "========== H3: pruning 30% =========="
+python inference.py \
+    --output_dir generated_audios/generated_H3_512C_pruned30 \
+	--checkpoint_file cp_hifigan/v1_c512_physical30/g_00265000 \
+	--config_file cp_hifigan/v1_c512_physical30/config.json \
+    --experiment_name H3_512C_pruned30_Physical_pruning \
+	--csv_file experiments_results.csv \
+    --save_compressed_checkpoint \
+    --compressed_checkpoint_file cp_hifigan/v1_c512_physical30/compressed_checkpoint
+
 # H4: pruning 30% + quantize
 python inference.py \
     --output_dir generated_audios/generated_H4_512C_pruned30_int8 \
-    --checkpoint_file cp_hifigan/v1_c128_ft30/g_00265000 \
-    --config_file config_v1_512.json \
+    --checkpoint_file cp_hifigan/v1_c128_physcial30/g_00265000 \
+    --config_file cp_hifigan/v1_c512_physical30/config.json  \
     --experiment_name H4_512C_pruned30_int8_resblocks_range_3_8 \
     --csv_file experiments_results.csv \
     --quantize \
@@ -290,6 +301,7 @@ grep -c 'H2_' experiments_results.csv
 - If issues persist, run without `--quantize` to isolate the problem
 
 ### Degraded audio quality after pruning
+- For physical pruning, ensure that a config such as `"physical_prune_ratio": 0.3` is added
 - Reduce pruning ratio (e.g., from 0.7 → 0.3)
 - Avoid aggressive pruning on smaller models (e.g., 128C)
 - Consider fine-tuning the pruned model to recover performance
