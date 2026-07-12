@@ -52,7 +52,7 @@ The goal is to analyze the trade-off between:
 - Audio quality (PESQ, STOI, Mel-spectrogram L1)
 
 The overall result is illustrated below:
-![Figure 1: Pareto frontiers](./figure_results/pareto_frontiers.pdf)
+![Figure 1: Pareto frontiers](./figure_results/pareto_frontiers.png)
 
 ---
 
