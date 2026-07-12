@@ -188,7 +188,6 @@ python inference.py \
     --compressed_checkpoint_file cp_hifigan/v1_c128_ft30/compressed_checkpoint
 
 # H3: pruning 30% (Physical pruning; checkpoint file after fine-tuning)
-echo "========== H3: pruning 30% =========="
 python inference.py \
     --output_dir generated_audios/generated_H3_512C_pruned30 \
 	--checkpoint_file cp_hifigan/v1_c512_physical30/g_00265000 \
