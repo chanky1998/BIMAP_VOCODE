@@ -116,8 +116,7 @@ pip install -r requirements.txt
 
 ### Demo: training and inference
 
-The demo uses a small set of WAV files from `LibriSpeech_wav/demo` and the pretrained 512-channel checkpoint in `cp_hifigan/v1_c512/g_07960000`.
-
+The demo uses a small set of WAV files from `LibriSpeech_wav/demo`, the pretrained 512-channel checkpoint at `cp_hifigan/v1_c512/g_07960000`, and the 70%-pruned fine-tuned 512-channel checkpoint at `cp_hifigan/v1_c512_physical70/g_00265000`.
 Run a short train demo:
 
 ```bash
@@ -137,6 +136,7 @@ The demo writes generated audio to:
 generated_audios/demo_pretrained
 generated_audios/demo_finetuned
 generated_audios/demo_quantized
+generated_audios/demo_pruned70
 ```
 
 The evaluation results are appended to:
@@ -230,42 +230,8 @@ Each row is one experiment result appended by `inference.py`.
 
 ## Analysis examples
 
-### Python (pandas)
+Run `experiments_results_pd.ipynb` to explore the experiment results, generate the comparison figures, and export the summary table.
 
-```python
-import pandas as pd
-
-df = pd.read_csv('experiments_results.csv')
-df['experiment_group'] = df['experiment_name'].str.extract(r'(H\d)')
-
-print('=== H1 scaling results ===')
-print(df[df['experiment_name'].str.contains('H1')][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
-
-print('\n=== H2 quantization ===')
-print(df[df['experiment_name'].str.contains('H2')][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
-
-print('\n=== H3 pruning by ratio ===')
-for ratio in [0.3, 0.5, 0.7]:
-        mask = (df['experiment_name'].str.contains('H3')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
-        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
-
-print('\n=== H4 pruning + quantization ===')
-for ratio in [0.3, 0.5, 0.7]:
-        mask = (df['experiment_name'].str.contains('H4')) & (df['experiment_name'].str.contains(f'pruned{int(ratio*100)}'))
-        print(df[mask][['experiment_name','num_params','model_size_mb','avg_rtf','avg_generator_rtf','pesq','stoi','mel_l1']])
-```
-
-### Bash
-
-```bash
-# show first 20 rows
-column -t -s, experiments_results.csv | head -20
-
-# count experiments
-grep -c 'H1_' experiments_results.csv
-grep -c 'H2_' experiments_results.csv
-......
-```
 
 ## Notes and recommendations
 

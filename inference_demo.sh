@@ -5,6 +5,7 @@ cd "$(dirname "$0")"
 
 TEST_WAV_DIR="LibriSpeech_wav/demo/test"
 PRETRAINED_MODEL="cp_hifigan/v1_c512/g_07960000"
+PRUNING_MODEL="cp_hifigan/v1_c512_physical70/g_00265000"
 DEMO_MODEL="$(ls -1 cp_hifigan/v1_c512/checkpoints/g_* 2>/dev/null | sort | tail -n 1)"
 
 if [ -z "$DEMO_MODEL" ]; then
@@ -46,5 +47,15 @@ python inference.py \
     --save_compressed_checkpoint \
     --compressed_checkpoint_file cp_hifigan/v1_c512/checkpoints/compressed_checkpoint_int8
 
+python inference.py \
+    --input_wavs_dir "$TEST_WAV_DIR" \
+    --output_dir generated_audios/demo_pruned70 \
+	--checkpoint_file "$PRUNING_MODEL" \
+	--config_file config_v1_512_p70.json \
+    --experiment_name demo_pruned70 \
+    --csv_file demo_results.csv \
+    --save_compressed_checkpoint \
+    --compressed_checkpoint_file cp_hifigan/v1_c512_physical70/checkpoints/compressed_checkpoint
+
 echo "Done. Results are in demo_results.csv"
-echo "Generated wavs are in generated_audios/demo_pretrained, generated_audios/demo_finetuned and generated_audios/demo_quantized"
+echo "Generated wavs are in generated_audios/demo_pretrained, generated_audios/demo_finetuned, generated_audios/demo_quantized, and generated_audios/demo_pruned70"

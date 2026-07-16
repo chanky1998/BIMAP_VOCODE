@@ -26,6 +26,12 @@ cp_hifigan/v1_c512/*
 !cp_hifigan/v1_c512/config.json
 !cp_hifigan/v1_c512/g_07960000
 
+!cp_hifigan/v1_c512_physical70/
+cp_hifigan/v1_c512_physical70/*
+
+!cp_hifigan/v1_c512_physical70/config.json
+!cp_hifigan/v1_c512_physical70/g_00265000
+
 *.pt
 *.pth
 *.ckpt
